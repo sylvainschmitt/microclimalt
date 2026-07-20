@@ -19,8 +19,8 @@ fc_all <- read_tsv("data/derived_data/tomst.tsv") %>%
   group_by(id, type) %>% 
   do(fft = fft_roll(
     data = .,
-    t = 5*24,
-    index_col = "date",
+    time_window = 5*24,
+    time_col = "date",
     temperature_col = "temperature",
     window = "5 days",
     step = "3 days"
@@ -37,8 +37,8 @@ fc_all <- read_tsv("data/raw_data/micro/test_sensor-project.tsv") %>%
   group_by(id, type) %>% 
   do(fft = fft_roll(
     data = .,
-    t = 5*24,
-    index_col = "date",
+    time_window = 5*24,
+    time_col = "date",
     temperature_col = "temperature",
     window = "5 days",
     step = "3 days"
@@ -63,8 +63,8 @@ fc_month <- read_tsv("data/raw_data/micro/test_sensor-project.tsv") %>%
   group_by(id, type) %>% 
   do(fft = fft_roll(
     data = .,
-    t = 3*30*24,
-    index_col = "date",
+    time_window = 3*30*24,
+    time_col = "date",
     temperature_col = "temperature",
     window = "90 days",
     step = "45 days"
@@ -210,10 +210,10 @@ We quickly compared the total power of each microclimate type with that of the m
 #| fig-cap: "Total power of macroclimate and microclimate across air, surface and soil captors. Boxplots represent the temporal variation across 5-day windows and spatial  variation across plots and forests."
 era_f <- read_tsv("data/derived_data/era5_cor.tsv") %>% 
   filter(type == "Fourier") %>% 
-  fft_roll(t = 5*24,
-           index_col = "time",
+  fft_roll(time_window = 5*24,
+           time_col = "time",
            temperature_col = "tas") %>% 
-  mutate(date = as_date(datetime)) %>% 
+  mutate(date = as_date(time)) %>% 
   select(date, period, power) %>% 
   rename(power_era = power)
 bind_rows(
@@ -511,7 +511,13 @@ sjPlot::tab_model(model)
 
 ```{r}
 marginaleffects::plot_predictions(model, condition = c("twi", "season", "hydric_year")) +
-  theme_bw()
+  theme_bw() +
+  ylim(0.25, 0.45) +
+  xlab("Topographic Wetness Index (TWI)") +
+  ylab("24-h amplitude ratio") +
+  theme(legend.position = "bottom") +
+  scale_color_discrete("Season", direction = -1) +
+  scale_fill_discrete("Season", direction = -1)
 ```
 
 ```{r}

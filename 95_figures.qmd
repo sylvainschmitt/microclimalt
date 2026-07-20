@@ -1,0 +1,567 @@
+# Figures {.unnumbered}
+
+This appendix help building the figures for the manuscript.
+
+```{r set}
+#| message: false
+#| include: false
+library(tidyverse)
+library(microclimr)
+library(terra)
+library(sf)
+library(cowplot)
+```
+
+## Figure 1
+
+```{r g_south_america}
+#| message: false
+#| warning: false
+sa <- rnaturalearth::ne_countries(continent = "south america", 
+                                  returnclass = "sf", scale = "medium") %>% 
+  mutate(highlight = "normal")
+fg <- rnaturalearth::ne_states(country = "france", returnclass = "sf") %>% 
+  filter(name_en == "French Guiana") %>% 
+  mutate(highlight = "aoi")
+g_sa <- bind_rows(sa, fg) %>% 
+  ggplot() +
+  geom_sf(aes(fill = highlight), color = "white", size = 0.2) +
+  scale_fill_manual(guide = "none",
+                    values = c("tomato", "lightgray")) +
+  theme_void()
+g_sa
+```
+
+```{r g_french_guiana}
+#| message: false
+#| warning: false
+fg <- rnaturalearth::ne_states(country = "france", returnclass = "sf") %>% 
+  filter(name_en == "French Guiana")
+sites <- data.frame(lon = c(-52.92486, -52.75),
+                    lat = c(5.27877, 5.25),
+                    names = c("Paracou", "CSG"))  %>% 
+  st_as_sf(coords = c("lon", "lat"), crs = 4326)
+g_fg <- ggplot(fg) +
+  geom_sf(color = "white", size = 0.2) +
+  geom_sf(data = sites) +
+  ggrepel::geom_text_repel(data = sites, 
+                           aes(label = names, geometry = geometry),
+                           stat = "sf_coordinates") +
+  theme_void()
+g_fg
+```
+
+```{r g_area}
+#| message: false
+#| warning: false
+sites <- data.frame(lon = c(-52.92486, -52.75, -52.650299),
+                    lat = c(5.27877, 5.25, 5.159700),
+                    names = c("Paracou", "CSG", "Kourou"))  %>% 
+  st_as_sf(coords = c("lon", "lat"), crs = 4326)
+bbox <- sites %>% 
+  ungroup() %>% 
+  st_bbox() %>% 
+  st_as_sfc() %>% 
+  sf::st_buffer(10*10^3)
+bg <- maptiles::get_tiles(bbox, provider = "Esri.WorldImagery", zoom = 10)
+g_area <- ggplot(sites) +
+  tidyterra::geom_spatraster_rgb(data = bg) +
+  geom_sf(col = "white") +
+  ggrepel::geom_text_repel(aes(label = names, geometry = geometry),
+                           stat = "sf_coordinates", col = "white") +
+  theme_bw() + theme(axis.title = element_blank())
+g_area
+```
+
+```{r g_temp_csg}
+#| message: false
+#| warning: false
+palette <-  c(
+  "raw"     = "#CC79A7",
+  "reference"  = "#882255"
+)
+weather <- list.files("data/raw_data/macro/", pattern = "gz", full.names = TRUE) %>%
+  read_delim(locale = locale(decimal_mark = "."), delim = ";") %>% 
+  select(NOM_USUEL, LAT, LON, AAAAMMJJHH, RR1, TN50) %>%
+  rename_all(tolower) %>%
+  rename(loc = nom_usuel, pr = rr1, tas = tn50) %>%
+  na.omit() %>% 
+  mutate(aaaammjjhh = as.character(aaaammjjhh)) %>%
+  mutate(year = str_sub(aaaammjjhh, 1, 4), 
+         month = str_sub(aaaammjjhh, 5, 6),
+         day = str_sub(aaaammjjhh, 7, 8),
+         hour = str_sub(aaaammjjhh, 9, 10)) %>%
+  mutate(time = as_datetime(paste0(year, "-", month, "-", day, 
+                                   " ", hour, ":00:00"))) %>%
+  select(loc, lat, lon, time, tas) %>% 
+  filter(loc == "KOUROU CSG") %>% 
+  left_join(read_tsv("data/raw_data/macro/era5_station.tsv") %>% 
+              select(-lon, -lat),
+            suffix = c("_station", "_era"), by = "time") %>% 
+  na.omit()
+csg <- read_tsv("data/raw_data/macro/era5_station.tsv") %>% 
+  arrange(time) %>% 
+  filter(time >= as_datetime("2023-04-01 00:00:00")) %>% 
+  filter(time <= as_datetime("2025-09-30 23:00:00")) %>% 
+  rename(tas_era = tas) %>% 
+  select(-lon, -lat) %>% 
+  left_join(select(weather, time, tas_station)) %>% 
+  mutate(date = as_date(time))
+g_csg <- csg %>% 
+  filter(time < as_datetime("2023-04-07 23:00:00")) %>% 
+  ungroup() %>% 
+  ggplot(aes(time)) +
+  geom_line(aes(y = tas_era, col = "ERA5-Land")) +
+  geom_line(aes(y = tas_station, col = "MeteoFrance weather station")) +
+  theme_bw() +
+  xlab("") + 
+  ylab("Temperature [°C]") +
+  ggtitle("Centre Spatial Guyanais (CSG)") +
+  # theme(legend.position = "bottom") +
+  scale_color_discrete("", palette = palette)
+g_csg
+```
+
+```{r g_temp_paracou}
+#| message: false
+#| warning: false
+cols <-  c(
+  "ERA5-Land raw" = "#CC79A7",
+  "ERA5-Land debiased" = "#882255",
+  "air" = "#56B4E9",
+  "surface" = "#009E73",
+  "soil" = "#E69F00"
+)
+era <- read_tsv("data/derived_data/era5_cor.tsv") %>% 
+  select(-lon, -lat) %>% 
+  arrange(time) %>% 
+  filter(time >= as_datetime("2023-04-01 00:00:00")) %>% 
+  filter(time <= as_datetime("2025-09-30 23:00:00")) %>% 
+  filter(type != "hes2025") %>% 
+  pivot_wider(names_from = type, values_from = tas)
+micro <- read_tsv("data/derived_data/tomst.tsv") %>% 
+  rename(time = date) %>% 
+  filter(time >= as_datetime("2023-04-01 00:00:00")) %>% 
+  filter(time <= as_datetime("2025-09-30 23:00:00")) %>% 
+  group_by(time) %>% 
+  summarise_all(mean)
+g_paracou <- era %>% 
+  left_join(micro) %>% 
+  filter(time < as_datetime("2023-04-07 23:00:00")) %>% 
+  ungroup() %>% 
+  select(time, raw, Fourier, t_soil, t_surface, t_air) %>% 
+  gather(type, tas, -time) %>% 
+  mutate(type = recode(type,
+                       "raw" = "ERA5-Land raw",
+                       "Fourier" = "ERA5-Land debiased",
+                       "t_soil" = "soil",
+                       "t_surface" = "surface",
+                       "t_air" = "air")) %>% 
+  mutate(type = factor(type, levels = c("ERA5-Land raw", "ERA5-Land debiased",
+                                        "air", "surface", "soil"))) %>% 
+  ggplot(aes(time, tas, col = type)) +
+  geom_line() +
+  theme_bw() +
+  xlab("") + 
+  ylab("Temperature [°C]") +
+  ggtitle("Paracou") +
+  # theme(legend.position = "bottom") +
+  scale_color_discrete("", palette = cols)
+g_paracou
+```
+
+```{r fig1b}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-cap: "Fig. 1: Bla."
+top_row <- plot_grid(g_sa, g_fg, g_area, ncol = 3, 
+                      rel_heights = c(1, 1, 2), labels = c('A.', 'B.', 'C.'))
+bottom_row <- plot_grid(g_csg, g_paracou, ncol = 1, align = 'v',
+                      rel_heights = c(1, 1), labels = c('D.', 'E.'))
+g <- plot_grid(top_row, bottom_row, rel_heights = c(1, 2), ncol = 1)
+cowplot::save_plot("figures/f1.png",
+                  plot = g,
+                  base_width = 10,
+                  base_height = 8,
+                  dpi = 300,
+                  bg = "white")
+g
+```
+
+## Figure 2
+
+```{r spectrum}
+#| message: false
+#| warning: false
+fc_all <- read_tsv("data/derived_data/fc_all.tsv") %>% 
+  mutate(type = factor(type, levels = c("air", "surface", "soil")))
+t <- fc_all %>% 
+  group_by(type, frequency, period) %>% 
+  summarise(sd = sd(power), power = mean(power))
+ga <- t %>% 
+  filter(period != 0) %>%
+  ggplot(aes(frequency, power)) +
+  geom_col() +
+  geom_linerange(aes(ymin = power-sd, ymax = power+sd)) +
+  geom_text(x = 3/12, y = 2, size = 5,
+            aes(label = paste0("Mean: ", round(power), "±", round(sd))), 
+            data = filter(t, period ==0)) +
+  theme_bw() +
+  scale_x_continuous(
+    breaks = c(1/(24*5), 1/24, 1/12, 1/8, 1/6),
+    labels = c("5d", "24", "12", "8", "6")
+  ) +
+  facet_wrap(~ type, nrow = 3) +
+  xlab("Period [hr]") + ylab("Power [°C]") +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 0, size = 12),
+        axis.text.y = element_text(size = 12),
+        strip.text = element_text(size = 12),
+        axis.title = element_text(size = 14, face = "bold"),
+        legend.text = element_text(size = 12))
+```
+
+```{r power24}
+#| message: false
+#| warning: false
+#| fig-cap: "Fig. 2b: Power for period 24-hr variation across time and seasons."
+gb <- fc_all %>% 
+  filter(period == 24) %>% 
+  mutate(power = ifelse(type == "soil" & power > 1, NA, power)) %>% 
+  ggplot(aes(datetime, power)) +
+  geom_rect(xmin = as_datetime("2023-8-1 00:00:00"), 
+            xmax = as_datetime("2023-12-1 00:00:00"), 
+            ymin = -Inf, ymax = Inf, alpha = 0.25, fill  = "#fff4e0") +
+  geom_rect(xmin = as_datetime("2024-8-1 00:00:00"), 
+            xmax = as_datetime("2024-12-1 00:00:00"), 
+            ymin = -Inf, ymax = Inf, alpha = 0.5, fill  = "#fff4e0") +
+  geom_rect(xmin = as_datetime("2025-8-1 00:00:00"), 
+            xmax = as_datetime("2025-12-1 00:00:00"), 
+            ymin = -Inf, ymax = Inf, alpha = 0.5, fill  = "#fff4e0") +
+  geom_vline(xintercept = c(as_datetime("2023-8-1 00:00:00"),
+                            as_datetime("2024-8-1 00:00:00"),
+                            as_datetime("2025-8-1 00:00:00")),
+             linetype = "dashed", col = "red") +
+  geom_line(aes(group = paste(id, type))) +
+  theme_bw() +
+  xlab("") +
+  ylab("Power for period 24-hr") +
+  theme(legend.position = "bottom") +
+  facet_wrap(~ type, nrow = 3) +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 0, size = 12),
+        axis.text.y = element_text(size = 12),
+        strip.text = element_text(size = 12),
+        axis.title = element_text(size = 14, face = "bold"),
+        legend.text = element_text(size = 12))
+```
+
+```{r fig2}
+#| message: false
+#| warning: false
+#| fig-width: 10
+#| fig-height: 8
+#| fig-cap: "Figure 2: The mean decomposition / power spectrum and some power across time. (Fig. S1 of 3-months vs. 5 days window)."
+g <- cowplot::plot_grid(ga, gb, rel_widths = c(1, 1.5), align = "hv")
+# cowplot::save_plot("figures/f2.png",
+#                    plot = g,
+#                    base_width = 10,
+#                    base_height = 8,
+#                    dpi = 300,
+#                    bg = "white")
+g
+```
+
+## Figure 3
+
+```{r 24_vs_mean_2}
+#| message: false
+#| warning: false
+#| fig-width: 10
+#| fig-height: 8
+#| fig-cap: "Figure 3: buffer ratios of mean and 24-hr across years, seasons and depth."
+era_f <- read_tsv("data/derived_data/era5_cor.tsv") %>% 
+  filter(type == "Fourier") %>% 
+  fft_roll(time_window = 5*24,
+           time_col = "time",
+           temperature_col = "tas") %>% 
+  mutate(date = as_date(time)) %>% 
+  select(date, period, power) %>% 
+  rename(power_era = power)
+palette <-  c(
+  "Air"     = "#56B4E9",   # sky blue
+  "Surface" = "#009E73",   # orange
+  "Soil"    = "#E69F00"    # green
+)
+g <- read_tsv("data/derived_data/fc_all.tsv") %>% 
+  mutate(date = as_date(datetime)) %>% 
+  left_join(era_f) %>% 
+  filter(period %in% c(0,12)) %>% 
+  select(-coefficient, -frequency) %>% 
+  na.omit() %>% 
+  mutate(ratio = power/power_era) %>% 
+  select(-power, -power_era) %>% 
+  mutate(period = paste0("period_", period)) %>% 
+  na.omit() %>% 
+  group_by(id, type, period, hydric_year, season) %>% 
+  summarise(q05 = quantile(ratio, .05),
+            q25 = quantile(ratio, .25),
+            q5 = quantile(ratio, .5),
+            q75 = quantile(ratio, .75),
+            q95 = quantile(ratio, .95)) %>% 
+  gather(metric, value, -type, -period, -id, -hydric_year, -season) %>% 
+  mutate(period_metric = paste0(period, "_", metric)) %>% 
+  ungroup() %>% 
+  select(-period, -metric) %>% 
+  pivot_wider(names_from = period_metric, values_from = value) %>% 
+  mutate(season_long = recode(season, "dry" = "Dry season", "wet" = "Wet season")) %>% 
+  mutate(hydric_year_long = recode(hydric_year, 
+                                   "2023-2024" = "El Niño year\n2023-2024",
+                                   "2024-2025" = "Normal year\n2024-2025")) %>% 
+  mutate(type = factor(type, levels = c("air", "surface", "soil"))) %>% 
+  ggplot(aes(period_0_q5, period_12_q5, col = type)) +
+  geom_hline(yintercept = 1, col = "grey") +
+  geom_vline(xintercept = 1, col = "grey") +
+  geom_segment(aes(x = period_0_q25, xend = period_0_q75), alpha = .5) +
+  geom_segment(aes(x = period_0_q05, xend = period_0_q95), linewidth = .2, alpha = .5) +
+  geom_segment(aes(y = period_12_q25, yend = period_12_q75), alpha = .5) +
+  geom_segment(aes(y = period_12_q05, yend = period_12_q95), linewidth = .2, alpha = .5) +
+  geom_point() +
+  theme_bw() +
+  xlab("Mean temperature ratio") +
+  ylab("24-h amplitude ratio") +
+  facet_grid(hydric_year_long ~ season_long) +
+  theme(legend.position = "bottom") +
+  scale_color_discrete("", palette = palette) +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 0, size = 12),
+        axis.text.y = element_text(size = 12),
+        strip.text = element_text(size = 12),
+        axis.title = element_text(size = 14, face = "bold"),
+        legend.text = element_text(size = 12))
+cowplot::save_plot("figures/f3.png",
+                 plot = g,
+                 base_width = 10,
+                 base_height = 8,
+                 dpi = 300,
+                 bg = "white")
+g
+```
+
+## Figure 4
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: "Figure 4: caption."
+palette <-  c(
+  "Air"     = "#56B4E9",   # sky blue
+  "Surface" = "#009E73",   # orange
+  "Soil"    = "#E69F00"    # green
+)
+ratios <- read_tsv("data/derived_data/fc_all.tsv") %>% 
+  mutate(date = as_date(datetime)) %>% 
+  left_join(era_f) %>% 
+  filter(!is.na(power_era)) %>% 
+  filter(period %in% c(0, 24)) %>% 
+  mutate(ratio = power/power_era) %>% 
+  group_by(period, type, hydric_year, season, id) %>% 
+  summarise(ratio = mean(ratio)) %>% 
+  na.omit()
+pad <- read_tsv("data/derived_data/sensors_pad_xy.tsv") %>% 
+  rename(x = x_p, y = y_p) %>%
+  left_join(read_tsv("data/derived_data/pad.tsv")) %>% 
+  group_by(id, h) %>% 
+  summarise(pad = median(pad)) %>% 
+  mutate(strata = ifelse(h < 10, "understory", "upperstory")) %>% 
+  group_by(id, strata) %>% 
+  summarise(pad = sum(pad)) %>% 
+  mutate(strata = paste0("pad_", strata)) %>% 
+  pivot_wider(names_from = "strata", values_from = "pad")
+topo <- read_tsv("data/derived_data/coords.tsv") %>% 
+  mutate(twi = extract(rast("data/raw_data/topo/Paracou_ALT_TWI_5m.tif"),
+                       read_tsv("data/derived_data/coords.tsv")[2:3])$Paracou_TWI_5m) %>% 
+  select(id, twi)
+model_all <- ratios %>% 
+  left_join(pad) %>% 
+  left_join(topo) %>% 
+  mutate(season = factor(season, levels = c("wet", "dry"))) %>% 
+  mutate(hydric_year = recode(hydric_year, 
+                               "2024-2025" = "normal", 
+                              "2023-2024" = "El Nino")) %>% 
+  mutate(hydric_year = factor(hydric_year, levels = c("normal", "El Nino"))) %>% 
+  ungroup() %>% 
+  mutate(across(c("twi", "pad_understory", "pad_upperstory"), scale)) %>% 
+  nest_by(period, type) %>% 
+  mutate(
+    fit = list(lm(ratio ~ season*hydric_year + twi + pad_understory + pad_upperstory, data = data)),
+    glance = list(broom::glance(fit) %>% 
+                    select(adj.r.squared, nobs)),
+    estimates = list(broom::tidy(fit, conf.int = TRUE) %>% 
+                       select(term, estimate, p.value, conf.low, conf.high))
+  ) %>% 
+  select(type, glance, estimates) %>% 
+  unnest() %>% 
+  filter(term != "(Intercept)") %>% 
+  rename_all(~ gsub(".", "_", ., fixed = TRUE)) %>% 
+  mutate(period = recode(as.character(period),
+                         "0" = "Mean temperature ratio",
+                         "24" = "24-h amplitude ratio")) %>% 
+  mutate(period = factor(period, levels = c("Mean temperature ratio",
+                                            "24-h amplitude ratio"))) %>% 
+  mutate(type = factor(type, levels = c("air", "surface", "soil"))) %>% 
+  mutate(term = recode(term,
+                       "twi" = "TWI",
+                       "seasondry" = "Dry season",
+                       "hydric_yearEl Nino" = "El Niño year",
+                       "pad_understory" = "PAD understory",
+                       "pad_upperstory" = "PAD upperstory",
+                       "seasondry:hydric_yearEl Nino" = "Dry season x El Niño year"
+                       )) %>% 
+  mutate(term = factor(term, levels = c("Dry season",
+                                        "El Niño year",
+                                        "Dry season x El Niño year",
+                                        "TWI",
+                                        "PAD understory",
+                                        "PAD upperstory") %>% 
+                         rev()))
+rsquared <- select(model_all, adj_r_squared) %>% unique()
+g <- model_all %>% 
+  ggplot(aes(term, estimate, col = type, alpha = (p_value < 0.05))) +
+  geom_hline(yintercept = 0, col = "darkgrey") +
+  geom_segment(aes(y = conf_low, yend = conf_high), 
+               position = position_dodge(width = 0.3, reverse = TRUE)) +
+  geom_point(position = position_dodge(width = 0.3, reverse = TRUE)) +
+  theme_bw() +
+  xlab("") + ylab("") +
+  scale_alpha_discrete(guide = "none", range = c(0.2, 1)) +
+  coord_flip() +
+  scale_color_discrete("", palette = palette) +
+  theme(legend.position = "bottom") +
+  facet_wrap(~ period) +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 0, size = 12),
+        axis.text.y = element_text(size = 12),
+        strip.text = element_text(size = 12),
+        axis.title = element_text(size = 14, face = "bold"),
+        legend.text = element_text(size = 12)) +
+  geom_text(aes(label = paste0("R² = ",  round(adj_r_squared, 2))), 
+            position = position_dodge(width = 1, reverse = TRUE), 
+            hjust = 0, show.legend = FALSE,
+            data = rsquared %>%  mutate(p_value = 0.01,
+                                        term = "Dry season", estimate = 0.05))
+cowplot::save_plot("figures/f4.png",
+                 plot = g,
+                 base_width = 7,
+                 base_height = 5,
+                 dpi = 300,
+                 bg = "white")
+g
+```
+
+## Figure S1
+
+```{r ps_3months}
+#| message: false
+#| warning: false
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "Figure S1: The mean decomposition / power spectrum of 3-months vs. 5 days window."
+fc_month <- read_tsv("data/derived_data/fc_month.tsv")
+g <- bind_rows(
+  fc_month %>% 
+    group_by(type, frequency, period) %>% 
+    summarise(sd = sd(power), power = mean(power)) %>% 
+    mutate(windows = "5 days"),
+  fc_all %>% 
+    group_by(type, frequency, period) %>% 
+    summarise(sd = sd(power), power = mean(power)) %>% 
+    mutate(windows = "90 days")
+) %>% 
+  filter(period %in% fc_all$period) %>% 
+  filter(frequency <= 1/6) %>% 
+  mutate(type = factor(type, levels = c("air", "surface", "soil"))) %>% 
+  ggplot(aes(frequency, power+1, fill = windows)) +
+  geom_col(position = position_dodge()) +
+  geom_linerange(aes(ymin = power+1-sd, ymax = power+1+sd), 
+                 position = position_dodge(width = 0.01)) +
+  theme_bw() +
+  facet_wrap(~ type, nrow = 3) +
+  scale_y_log10() +
+  scale_x_continuous(
+    breaks = c(0, 1/24, 1/12, 1/8, 1/6),
+    labels = c("Mean", "24", "12", "8", "6")
+  ) +
+  xlab("Period [hr]") + ylab("Power [°C]") +
+  scale_color_discrete("Window size") +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 0, size = 12),
+        axis.text.y = element_text(size = 12),
+        strip.text = element_text(size = 12),
+        axis.title = element_text(size = 14, face = "bold"),
+        legend.text = element_text(size = 12),
+        legend.position = "bottom")
+# cowplot::save_plot("figures/fs1.png",
+#                   plot = g,
+#                   base_width = 7,
+#                   base_height = 5,
+#                   dpi = 300,
+#                   bg = "white")
+g
+```
+
+## Table S1
+
+```{r}
+#| message: false
+#| warning: false
+model_all <- ratios %>% 
+  left_join(pad) %>% 
+  left_join(topo) %>% 
+  mutate(season = factor(season, levels = c("wet", "dry"))) %>% 
+  mutate(hydric_year = recode(hydric_year, 
+                               "2024-2025" = "normal", 
+                              "2023-2024" = "El Nino")) %>% 
+  mutate(hydric_year = factor(hydric_year, levels = c("normal", "El Nino"))) %>% 
+  ungroup() %>% 
+  mutate(across(c("twi", "pad_understory", "pad_upperstory"), scale)) %>% 
+  nest_by(period, type) %>% 
+  mutate(
+    fit = list(lm(ratio ~ season*hydric_year + twi + pad_understory + pad_upperstory, data = data))
+  )
+sjPlot::tab_model(model_all$fit, 
+                  dv.labels = paste(model_all$period, model_all$type), 
+                  file = "figures/tables1.html")
+```
+
+## Figure S2
+
+```{r lm_check}
+#| message: false
+#| warning: false
+#| fig-width: 10
+#| fig-height: 8
+model_all <- ratios %>% 
+  left_join(pad) %>% 
+  left_join(topo) %>% 
+  mutate(season = factor(season, levels = c("wet", "dry"))) %>% 
+  mutate(hydric_year = recode(hydric_year, 
+                               "2024-2025" = "normal", 
+                              "2023-2024" = "El Nino")) %>% 
+  mutate(hydric_year = factor(hydric_year, levels = c("normal", "El Nino"))) %>% 
+  ungroup() %>% 
+  mutate(across(c("twi", "pad_understory", "pad_upperstory"), scale)) %>% 
+  nest_by(period, type) %>% 
+  mutate(
+    fit = list(lm(ratio ~ season*hydric_year + twi + pad_understory + pad_upperstory, data = data))
+  )
+g <- performance::check_model(model_all$fit[[4]])
+png("figures/fs2.png",
+    width = 10,
+    height = 8,
+    units = "in",
+    res = 300)
+g
+dev.off()
+g
+```

@@ -1,10 +1,10 @@
-# microclim
-Oct 9, 2025
+# microclimalt
+Jul 20, 2026
 
-**microclim** is a project that aims to exploit the micrometeorological
-loggers installed by the ALT project in 2023 to improve our
-understanding of the horizontal, vertical and temporal variations in the
-microclimate of tropical forests.
+**microclimalt** is a project that aims to exploit the
+micrometeorological loggers installed by the ALT project in 2023 to
+improve our understanding of the horizontal, vertical and temporal
+variations in the microclimate of tropical forests.
 
 > How do canopy openness, vegetation density and micropography (water
 > and soil texture) affect topsoil, surface and aboveground air
@@ -24,7 +24,7 @@ The objective are:
 
 ## Project
 
-**microclim** includes all codes to access the data (in `data/`) &
+**microclimalt** includes all codes to access the data (in `data/`) &
 analyse the data (`files.qmd`) with associated [documentation and
 figures](https://sylvainschmitt.github.io/microclim/). Intermediary
 files and outputs can be accessed in `outputs/`. The project takes
@@ -32,24 +32,6 @@ advantage of `renv` to manage the R environment for enhanced
 reproducibility.
 
 > To be reviewed later splitting raw and derived data.
-
-## Contribution
-
-You can contribute to the project by forking the repository on github
-and cloning the fork to your machine using several options, including
-GitHub desktop GUI. Access to the data is limited and can be requested
-by emailing people from the core group (see below). Further informations
-on contribution are detailed in the online document:
-<https://sylvainschmitt.github.io/microclim/98_contributing.html>.
-
-## Help
-
-Please preferentially create an issue on GitHub for any questions, bugs
-or help needed regarding **microclim**:
-<a href="https://github.com/Bsylvainschmitt/microclim/issues"
-class="uri">https://github.com/sylvainschmitt/microclim/issues</a> . You
-may however reach us by mail with people from the core group (see
-below).
 
 ## Core group
 

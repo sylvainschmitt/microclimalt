@@ -1,11 +1,12 @@
--   microclim 0.1.0.9011: Updated with two hydric years (near the end)
--   microclim 0.1.0.9010: Fourier debiasing 2, updated microclim, updated figs
--   microclim 0.1.0.9009: Fourier debiasing 2
--   microclim 0.1.0.9008: season on figs, Fourier debiasing, 3-months decomposition of microclimate, semilog power spectrums
--   microclim 0.1.0.9007: swc at different depth from Guyaflux (REW instead?) and temporal+spatial model
--   microclim 0.1.0.9006: buffer temporal descriptors
--   microclim 0.1.0.9005: abandoned test of longer times series and calibration (notes in pages)
--   microclim 0.1.0.9004: ERA5-Land debiasing following Hes et al. (2025)
--   microclim 0.1.0.9003: ToDo, PAI check and 1-m PAD buffer
--   microclim 0.1.0.9002: quick first analyses. Note: extend time series and compare dry season (one is ENSO)
--   microclim 0.1.0.9001: reset for Fourier approach
+- microclimalt 0.1.0.9012: repo renaming and microclimr update
+- microclimalt 0.1.0.9011: Updated with two hydric years (near the end)
+- microclimalt 0.1.0.9010: Fourier debiasing 2, updated microclim, updated figs
+- microclimalt 0.1.0.9009: Fourier debiasing 2
+- microclimalt 0.1.0.9008: season on figs, Fourier debiasing, 3-months decomposition of microclimate, semilog power spectrums
+- microclimalt 0.1.0.9007: swc at different depth from Guyaflux (REW instead?) and temporal+spatial model
+- microclimalt 0.1.0.9006: buffer temporal descriptors
+- microclimalt 0.1.0.9005: abandoned test of longer times series and calibration (notes in pages)
+- microclimalt 0.1.0.9004: ERA5-Land debiasing following Hes et al. (2025)
+- microclimalt 0.1.0.9003: ToDo, PAI check and 1-m PAD buffer
+- microclimalt 0.1.0.9002: quick first analyses. Note: extend time series and compare dry season (one is ENSO)
+- microclimalt 0.1.0.9001: reset for Fourier approach

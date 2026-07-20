@@ -221,9 +221,9 @@ fc %>%
 #| warning: false
 #| fig-cap: "Power spectrums ratios across 1-year for ERA5-Land and MeteoFrance temperature data from Kourou CSG."
 ratios <- fc %>% 
-  mutate(amplitude = Mod(coefficient)) %>% 
-  select(-power, -coefficient) %>% 
-  pivot_wider(names_from = source, values_from = amplitude) %>% 
+  mutate(mode = Mod(fft_coefficient(amplitude, phase))) %>% 
+  select(-power, -amplitude, -phase) %>% 
+  pivot_wider(names_from = source, values_from = mode) %>% 
   mutate(ratio = station/era)
 ratios %>% 
   ggplot(aes(frequency, log(ratio))) +
@@ -254,11 +254,11 @@ era <- read_tsv("data/raw_data/macro/era5.tsv") %>%
   select(-lon, -lat)
 fc_cor <- fft_tab(era$tas, 24*duration) %>% 
   left_join(select(ratios, frequency, period, ratio)) %>% 
-  mutate(coefficient_c = coefficient*ratio)
+  mutate(coefficient_c = fft_coefficient(amplitude, phase)*ratio)
 era$tas_corf <- fft_reconstruct(
-  c = fc_cor$coefficient_c,
-  f = fc_cor$frequency[-1], 
-  time = (1:(24*duration))-1
+  coefficients = fc_cor$coefficient_c,
+  frequencies = fc_cor$frequency[-1], 
+  times = (1:(24*duration))-1
 )
 era %>% 
   filter(time < as_datetime("2023-04-07 23:00:00")) %>% 
@@ -286,9 +286,9 @@ era <- read_tsv("data/raw_data/macro/era5.tsv") %>%
   mutate(tas_cor = (tas-b)/a) %>% 
   rename(raw = tas, hes2025 = tas_cor) 
 era$Fourier <- fft_reconstruct(
-  c = fc_cor$coefficient_c,
-  f = fc_cor$frequency[-1], 
-  time = (1:(24*duration))-1
+  coefficients = fc_cor$coefficient_c,
+  frequencies = fc_cor$frequency[-1], 
+  times = (1:(24*duration))-1
 )
 era <- era %>% 
   gather(type, tas, -time, -lon, -lat)

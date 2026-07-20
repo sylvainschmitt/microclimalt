@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "microclim"
+  title: "microclimalt"
   date: last-modified
   chapters:
     - index.qmd
@@ -20,9 +20,9 @@ book:
       - 21_macroclimate.qmd
       - 22_microclimate.qmd
   appendices:
+    - 95_figures.qmd
     - 96_literature.qmd
     - 97_meeting.qmd
-    - 98_contributing.qmd
     - 99_references.qmd
 
 bibliography: references.bib

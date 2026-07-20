@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>microclim - Macroclimate</title>
+<title>microclimalt - Macroclimate</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,7 +144,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">microclim</a> 
+      <a href="./">microclimalt</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -241,6 +241,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./95_figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Figures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./96_literature.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literature</span></a>
   </div>
@@ -249,12 +255,6 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./97_meeting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Meetings</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./98_contributing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contributing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -556,9 +556,9 @@ div.csl-indent {
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ratios <span class="ot">&lt;-</span> fc <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">amplitude =</span> <span class="fu">Mod</span>(coefficient)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>power, <span class="sc">-</span>coefficient) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, <span class="at">values_from =</span> amplitude) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mode =</span> <span class="fu">Mod</span>(<span class="fu">fft_coefficient</span>(amplitude, phase))) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>power, <span class="sc">-</span>amplitude, <span class="sc">-</span>phase) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> source, <span class="at">values_from =</span> mode) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> station<span class="sc">/</span>era)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ratios <span class="sc">%&gt;%</span> </span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(frequency, <span class="fu">log</span>(ratio))) <span class="sc">+</span></span>
@@ -597,11 +597,11 @@ div.csl-indent {
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>lon, <span class="sc">-</span>lat)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>fc_cor <span class="ot">&lt;-</span> <span class="fu">fft_tab</span>(era<span class="sc">$</span>tas, <span class="dv">24</span><span class="sc">*</span>duration) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">select</span>(ratios, frequency, period, ratio)) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">coefficient_c =</span> coefficient<span class="sc">*</span>ratio)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">coefficient_c =</span> <span class="fu">fft_coefficient</span>(amplitude, phase)<span class="sc">*</span>ratio)</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>era<span class="sc">$</span>tas_corf <span class="ot">&lt;-</span> <span class="fu">fft_reconstruct</span>(</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> fc_cor<span class="sc">$</span>coefficient_c,</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">f =</span> fc_cor<span class="sc">$</span>frequency[<span class="sc">-</span><span class="dv">1</span>], </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> (<span class="dv">1</span><span class="sc">:</span>(<span class="dv">24</span><span class="sc">*</span>duration))<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">coefficients =</span> fc_cor<span class="sc">$</span>coefficient_c,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">frequencies =</span> fc_cor<span class="sc">$</span>frequency[<span class="sc">-</span><span class="dv">1</span>], </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> (<span class="dv">1</span><span class="sc">:</span>(<span class="dv">24</span><span class="sc">*</span>duration))<span class="sc">-</span><span class="dv">1</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>era <span class="sc">%&gt;%</span> </span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">&lt;</span> <span class="fu">as_datetime</span>(<span class="st">"2023-04-07 23:00:00"</span>)) <span class="sc">%&gt;%</span> </span>
@@ -630,9 +630,9 @@ div.csl-indent {
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tas_cor =</span> (tas<span class="sc">-</span>b)<span class="sc">/</span>a) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">raw =</span> tas, <span class="at">hes2025 =</span> tas_cor) </span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>era<span class="sc">$</span>Fourier <span class="ot">&lt;-</span> <span class="fu">fft_reconstruct</span>(</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> fc_cor<span class="sc">$</span>coefficient_c,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">f =</span> fc_cor<span class="sc">$</span>frequency[<span class="sc">-</span><span class="dv">1</span>], </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> (<span class="dv">1</span><span class="sc">:</span>(<span class="dv">24</span><span class="sc">*</span>duration))<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">coefficients =</span> fc_cor<span class="sc">$</span>coefficient_c,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">frequencies =</span> fc_cor<span class="sc">$</span>frequency[<span class="sc">-</span><span class="dv">1</span>], </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> (<span class="dv">1</span><span class="sc">:</span>(<span class="dv">24</span><span class="sc">*</span>duration))<span class="sc">-</span><span class="dv">1</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>era <span class="ot">&lt;-</span> era <span class="sc">%&gt;%</span> </span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(type, tas, <span class="sc">-</span>time, <span class="sc">-</span>lon, <span class="sc">-</span>lat)</span>
