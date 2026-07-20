@@ -97,8 +97,6 @@ write_tsv(coords, "data/derived_data/coords.tsv")
 read_tsv("data/derived_data/coords.tsv") %>% 
   st_as_sf(coords = c("x", "y"), crs = 32622) %>% 
   ggplot() +
-  tidyterra::geom_spatraster(aes(fill = Z),
-                             data = rast("data/raw_data/topo/Paracou_ALT_mnt.tif")) +
   geom_sf(data = read_sf("data/raw_data/inventory/ALT/ALT.shp"), fill = NA) +
   geom_sf(aes(col = light)) +
   ggrepel::geom_text_repel(
@@ -107,11 +105,6 @@ read_tsv("data/derived_data/coords.tsv") %>%
     min.segment.length = 0
   ) +
   theme_bw() +
-  scale_fill_distiller("Elevation [ m ]", 
-                       type = "seq",
-                       direction = -1,
-                       palette = "Greys",
-                       na.value = "transparent") +
   theme(axis.title = element_blank())
 ```
 
@@ -124,8 +117,8 @@ knitr::include_graphics("figures/plan.png")
 
 Associated data are:
 
--   Macroclimate from ERA5-Land [@muñoz-sabater2021] and MétéoFrance
--   Flux data from Guyaflux [@bonal2008] representing upper canopy and 2-m conditions and additionally soil water content at different depth
--   Vegetation from multiple lidar acquisition
--   Topography extracted from the lidar acquisition
--   Pedology sampled on the plot
+- Macroclimate from ERA5-Land [@muñoz-sabater2021] and MétéoFrance
+- Flux data from Guyaflux [@bonal2008] representing upper canopy and 2-m conditions and additionally soil water content at different depth
+- Vegetation from multiple lidar acquisition
+- Topography extracted from the lidar acquisition
+- Pedology sampled on the plot

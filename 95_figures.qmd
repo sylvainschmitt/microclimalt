@@ -29,7 +29,6 @@ g_sa <- bind_rows(sa, fg) %>%
   scale_fill_manual(guide = "none",
                     values = c("tomato", "lightgray")) +
   theme_void()
-g_sa
 ```
 
 ```{r g_french_guiana}
@@ -48,7 +47,6 @@ g_fg <- ggplot(fg) +
                            aes(label = names, geometry = geometry),
                            stat = "sf_coordinates") +
   theme_void()
-g_fg
 ```
 
 ```{r g_area}
@@ -70,7 +68,6 @@ g_area <- ggplot(sites) +
   ggrepel::geom_text_repel(aes(label = names, geometry = geometry),
                            stat = "sf_coordinates", col = "white") +
   theme_bw() + theme(axis.title = element_blank())
-g_area
 ```
 
 ```{r g_temp_csg}
@@ -117,16 +114,13 @@ g_csg <- csg %>%
   xlab("") + 
   ylab("Temperature [°C]") +
   ggtitle("Centre Spatial Guyanais (CSG)") +
-  # theme(legend.position = "bottom") +
   scale_color_discrete("", palette = palette)
-g_csg
 ```
 
 ```{r g_temp_paracou}
 #| message: false
 #| warning: false
 cols <-  c(
-  "ERA5-Land raw" = "#CC79A7",
   "ERA5-Land debiased" = "#882255",
   "air" = "#56B4E9",
   "surface" = "#009E73",
@@ -137,7 +131,7 @@ era <- read_tsv("data/derived_data/era5_cor.tsv") %>%
   arrange(time) %>% 
   filter(time >= as_datetime("2023-04-01 00:00:00")) %>% 
   filter(time <= as_datetime("2025-09-30 23:00:00")) %>% 
-  filter(type != "hes2025") %>% 
+  filter(type == "Fourier") %>% 
   pivot_wider(names_from = type, values_from = tas)
 micro <- read_tsv("data/derived_data/tomst.tsv") %>% 
   rename(time = date) %>% 
@@ -149,15 +143,14 @@ g_paracou <- era %>%
   left_join(micro) %>% 
   filter(time < as_datetime("2023-04-07 23:00:00")) %>% 
   ungroup() %>% 
-  select(time, raw, Fourier, t_soil, t_surface, t_air) %>% 
+  select(time, Fourier, t_soil, t_surface, t_air) %>% 
   gather(type, tas, -time) %>% 
   mutate(type = recode(type,
-                       "raw" = "ERA5-Land raw",
                        "Fourier" = "ERA5-Land debiased",
                        "t_soil" = "soil",
                        "t_surface" = "surface",
                        "t_air" = "air")) %>% 
-  mutate(type = factor(type, levels = c("ERA5-Land raw", "ERA5-Land debiased",
+  mutate(type = factor(type, levels = c("ERA5-Land debiased",
                                         "air", "surface", "soil"))) %>% 
   ggplot(aes(time, tas, col = type)) +
   geom_line() +
@@ -165,12 +158,12 @@ g_paracou <- era %>%
   xlab("") + 
   ylab("Temperature [°C]") +
   ggtitle("Paracou") +
-  # theme(legend.position = "bottom") +
   scale_color_discrete("", palette = cols)
-g_paracou
 ```
 
 ```{r fig1b}
+#| message: false
+#| warning: false
 #| fig-width: 10
 #| fig-height: 8
 #| fig-cap: "Fig. 1: Bla."
@@ -338,7 +331,17 @@ g <- read_tsv("data/derived_data/fc_all.tsv") %>%
         axis.text.y = element_text(size = 12),
         strip.text = element_text(size = 12),
         axis.title = element_text(size = 14, face = "bold"),
-        legend.text = element_text(size = 12))
+        legend.text = element_text(size = 12)) +
+  annotate("segment", x = 1.001, y = 0.9, xend = 1.05, yend = 0.9,
+           arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
+           size = 1.1, col = "darkgrey") +
+  annotate("text", x = 1.025, y = 0.85,
+           col = "darkgrey", size = 5, label = "amplifying") +
+  annotate("segment", x = 0.999, y = 0.9, xend = 0.95, yend = 0.9,
+           arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
+           size = 1.1, col = "darkgrey") +
+  annotate("text", x = 0.98, y = 0.85,
+           col = "darkgrey", size = 5, label = "buffering")
 cowplot::save_plot("figures/f3.png",
                  plot = g,
                  base_width = 10,
@@ -353,6 +356,8 @@ g
 ```{r}
 #| message: false
 #| warning: false
+#| fig-width: 7
+#| fig-height: 5
 #| fig-cap: "Figure 4: caption."
 palette <-  c(
   "Air"     = "#56B4E9",   # sky blue
@@ -449,7 +454,17 @@ g <- model_all %>%
             position = position_dodge(width = 1, reverse = TRUE), 
             hjust = 0, show.legend = FALSE,
             data = rsquared %>%  mutate(p_value = 0.01,
-                                        term = "Dry season", estimate = 0.05))
+                                        term = "Dry season", estimate = 0.05)) +
+  annotate("segment", x = 0.6, y = 0.01, xend = 0.6, yend = 0.1,
+           arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
+           size = 0.9, col = "darkgrey") +
+  annotate("segment", x = 0.6, y = -0.01, xend = 0.6, yend = -0.06,
+           arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
+           size = 0.9, col = "darkgrey") +
+  annotate("text", x = 0.75, y = -0.02,
+           size = 3, col = "darkgrey", label = "+buffer") +
+  annotate("text", x = 0.75, y = 0.06,
+           size = 3, col = "darkgrey", label = "-buffer")
 cowplot::save_plot("figures/f4.png",
                  plot = g,
                  base_width = 7,
@@ -461,12 +476,80 @@ g
 
 ## Figure S1
 
+```{r fig_env}
+#| message: false
+#| warning: false
+#| fig-width: 10
+#| fig-height: 8
+#| fig-cap: "Figure S1: Caption."
+g_sensors <- read_tsv("data/derived_data/coords.tsv") %>% 
+  st_as_sf(coords = c("x", "y"), crs = 32622) %>% 
+  mutate(light = ifelse(light == "Understory", "Closed canopy", light)) |> 
+  ggplot() +
+  geom_sf(data = read_sf("data/raw_data/inventory/ALT/ALT.shp"), fill = NA) +
+  geom_sf(aes(col = light)) +
+  ggrepel::geom_text_repel(
+    aes(label = id, geometry = geometry),
+    stat = "sf_coordinates",
+    min.segment.length = 0
+  ) +
+  theme_void() +
+  scale_color_discrete("") +
+  ggtitle("Sensors")
+g_pad_under <- read_tsv("data/derived_data/pad.tsv") %>% 
+  filter(pad < 5) %>% 
+  filter(h < 10) |> 
+  group_by(x, y) %>% 
+  summarise(pad = sum(pad, na.rm = TRUE)) %>% 
+  ggplot(aes(x, y)) +
+  geom_point(aes(col = pad)) +
+  scale_color_viridis_c("[PAD,"~m^2~m^{-3}~"]", trans = "sqrt") +
+  theme_void() +
+  coord_equal() +
+  geom_point(data = read_tsv("data/derived_data/coords.tsv"),
+             col = "black", alpha = .5) +
+  ggtitle("PAD understory")
+g_pad_upper <- read_tsv("data/derived_data/pad.tsv") %>% 
+  filter(pad < 5) %>% 
+  filter(h >= 10) |> 
+  group_by(x, y) %>% 
+  summarise(pad = sum(pad, na.rm = TRUE)) %>% 
+  ggplot(aes(x, y)) +
+  geom_point(aes(col = pad)) +
+  scale_color_viridis_c("[PAD,"~m^2~m^{-3}~"]", trans = "sqrt") +
+  theme_void() +
+  coord_equal() +
+  geom_point(data = read_tsv("data/derived_data/coords.tsv"),
+             col = "black", alpha = .5) +
+  ggtitle("PAD upperstory")
+g_twi <- read_tsv("data/derived_data/coords.tsv") %>% 
+  st_as_sf(coords = c("x", "y"), crs = 32622) %>% 
+  ggplot() +
+  tidyterra::geom_spatraster(aes(fill = Paracou_TWI_5m),
+                             data = rast("data/raw_data/topo/Paracou_ALT_TWI_5m.tif") |> 
+                               project("epsg:32622")) +
+  geom_sf(col = "black", alpha = .5) +
+  scale_fill_viridis_c("[TWI]", na.value = NA, trans = "sqrt", direction = -1) +
+  theme_void() +
+  ggtitle("TWI")
+g <- plot_grid(g_sensors, g_pad_under, g_pad_upper, g_twi, align = "hv")
+cowplot::save_plot("figures/fs1.png",
+                   plot = g,
+                   base_width = 10,
+                   base_height = 8,
+                   dpi = 300,
+                   bg = "white")
+g
+```
+
+## Figure S2
+
 ```{r ps_3months}
 #| message: false
 #| warning: false
 #| fig-width: 7
 #| fig-height: 5
-#| fig-cap: "Figure S1: The mean decomposition / power spectrum of 3-months vs. 5 days window."
+#| fig-cap: "Figure S2: The mean decomposition / power spectrum of 3-months vs. 5 days window."
 fc_month <- read_tsv("data/derived_data/fc_month.tsv")
 g <- bind_rows(
   fc_month %>% 
@@ -501,12 +584,12 @@ g <- bind_rows(
         axis.title = element_text(size = 14, face = "bold"),
         legend.text = element_text(size = 12),
         legend.position = "bottom")
-# cowplot::save_plot("figures/fs1.png",
-#                   plot = g,
-#                   base_width = 7,
-#                   base_height = 5,
-#                   dpi = 300,
-#                   bg = "white")
+cowplot::save_plot("figures/fs2.png",
+                 plot = g,
+                 base_width = 7,
+                 base_height = 5,
+                 dpi = 300,
+                 bg = "white")
 g
 ```
 
@@ -534,7 +617,7 @@ sjPlot::tab_model(model_all$fit,
                   file = "figures/tables1.html")
 ```
 
-## Figure S2
+## Figure S3
 
 ```{r lm_check}
 #| message: false
@@ -556,7 +639,7 @@ model_all <- ratios %>%
     fit = list(lm(ratio ~ season*hydric_year + twi + pad_understory + pad_upperstory, data = data))
   )
 g <- performance::check_model(model_all$fit[[4]])
-png("figures/fs2.png",
+png("figures/fs3.png",
     width = 10,
     height = 8,
     units = "in",
