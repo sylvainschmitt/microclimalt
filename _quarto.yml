@@ -21,7 +21,7 @@ book:
       - 22_microclimate.qmd
   appendices:
     - 95_figures.qmd
-    - 96_literature.qmd
+    - 96_msc.qmd
     - 97_meeting.qmd
     - 99_references.qmd
 
@@ -34,3 +34,4 @@ format:
     number-depth: -1
 
 editor: visual
+csl: gcb.csl

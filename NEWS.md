@@ -1,3 +1,4 @@
+- microclimalt 0.1.0.9015: msc in the book with discussion (some refs have to be fixed)
 - microclimalt 0.1.0.9014: msc draft init
 - microclimalt 0.1.0.9013: updated figures
 - microclimalt 0.1.0.9012: repo renaming and microclimr update

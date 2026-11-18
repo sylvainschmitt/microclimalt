@@ -5,3 +5,5 @@
 .Ruserdata
 *_cache
 /.quarto/
+
+**/*.quarto_ipynb

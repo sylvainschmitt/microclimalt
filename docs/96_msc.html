@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Manuscript – microclimalt</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./97_meeting.html" rel="next">
+<link href="./95_figures.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f2e609f69be186d5c4c9edbe573f62a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./95_figures.html">Appendices</a></li><li class="breadcrumb-item"><a href="./96_msc.html">Manuscript</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">microclimalt</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./10_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_microclimate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Microclimate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_macroclimate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Macroclimate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_guyaflux.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guyaflux</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vegetation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_topography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Topography</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16_pedology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pedology</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./20_analyses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyses</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21_macroclimate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Macroclimate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22_microclimate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Microclimate</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./95_figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Figures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./96_msc.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Manuscript</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./97_meeting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Meetings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99_references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#affiliations" id="toc-affiliations" class="nav-link active" data-scroll-target="#affiliations">Affiliations</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a>
+  <ul class="collapse">
+  <li><a href="#keywords" id="toc-keywords" class="nav-link" data-scroll-target="#keywords">Keywords</a></li>
+  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#material-and-methods" id="toc-material-and-methods" class="nav-link" data-scroll-target="#material-and-methods"><strong>Material and methods</strong></a>
+  <ul class="collapse">
+  <li><a href="#study-site-and-data" id="toc-study-site-and-data" class="nav-link" data-scroll-target="#study-site-and-data"><strong>Study site and data</strong></a></li>
+  <li><a href="#discrete-fourier-transform-and-statistical-analyses" id="toc-discrete-fourier-transform-and-statistical-analyses" class="nav-link" data-scroll-target="#discrete-fourier-transform-and-statistical-analyses"><strong>Discrete Fourier Transform and statistical analyses</strong></a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><strong>Results</strong></a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><strong>Discussion</strong></a>
+  <ul class="collapse">
+  <li><a href="#overall-buffering-pattern" id="toc-overall-buffering-pattern" class="nav-link" data-scroll-target="#overall-buffering-pattern"><strong>Overall buffering pattern</strong></a></li>
+  <li><a href="#seasonal-and-interannual-forcing-dominate-over-local-structure" id="toc-seasonal-and-interannual-forcing-dominate-over-local-structure" class="nav-link" data-scroll-target="#seasonal-and-interannual-forcing-dominate-over-local-structure"><strong>Seasonal and interannual forcing dominate over local structure</strong></a></li>
+  <li><a href="#role-of-vegetation-structure-and-topography" id="toc-role-of-vegetation-structure-and-topography" class="nav-link" data-scroll-target="#role-of-vegetation-structure-and-topography"><strong>Role of vegetation structure and topography</strong></a></li>
+  <li><a href="#broader-implications" id="toc-broader-implications" class="nav-link" data-scroll-target="#broader-implications"><strong>Broader implications</strong></a></li>
+  <li><a href="#limitations-and-future-directions" id="toc-limitations-and-future-directions" class="nav-link" data-scroll-target="#limitations-and-future-directions"><strong>Limitations and future directions</strong></a></li>
+  </ul></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements"><strong>Acknowledgements</strong></a></li>
+  <li><a href="#author-contributions" id="toc-author-contributions" class="nav-link" data-scroll-target="#author-contributions"><strong>Author contributions</strong></a></li>
+  <li><a href="#data-availability" id="toc-data-availability" class="nav-link" data-scroll-target="#data-availability"><strong>Data availability</strong></a></li>
+  <li><a href="#supplementary-material" id="toc-supplementary-material" class="nav-link" data-scroll-target="#supplementary-material"><strong>Supplementary material</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./95_figures.html">Appendices</a></li><li class="breadcrumb-item"><a href="./96_msc.html">Manuscript</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Manuscript</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This appendix is the final manuscript</p>
+<p><strong>Title</strong>: “Topography and vegetation moderate understory microclimate buffering, but El Niño dry seasons overwhelm forest thermal refugia in Amazonia</p>
+<p><strong>Authors</strong>: <em>Sylvain Schmitt (1,2), Erwan Hingant (3), Vincyane Badouard (4), Géraldine Derroire (1,2), Léa Françoise (5), Giacomo Sellan (5), Grégoire Vincent (4), Jérôme Chave (6), Jonathan Lenoir (7)</em></p>
+<p><strong>Aim</strong>: <em>Global Change Biology</em></p>
+<p><strong>Cover letter</strong>:</p>
+<section id="affiliations" class="level2">
+<h2 class="anchored" data-anchor-id="affiliations">Affiliations</h2>
+<p>1 - CIRAD, UPR Forêts et Sociétés, F-34398 Montpellier, France<br>
+2 - Forêts et Sociétés, Univ Montpellier, CIRAD, Montpellier, France<br>
+3 - UMR CNRS 7352 “Laboratoire Amiénois de Mathématique Fondamentale et Appliquée” (LAMFA), Université de Picardie Jules Verne, 33 rue St-Leu, 80000 Amiens, France<br>
+4 - AMAP, ADEME<br>
+5 - ECOFOG<br>
+6 - CRBE, CNRS<br>
+7 - UMR CNRS 7058 “Ecologie et Dynamique des Systèmes Anthropisés” (EDYSAN), Université de Picardie Jules Verne, 1 rue des Louvels, 80000 Amiens, France</p>
+</section>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p><em>Abstract.</em></p>
+<section id="keywords" class="level3">
+<h3 class="anchored" data-anchor-id="keywords">Keywords</h3>
+<p><em>Keywords.</em></p>
+</section>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Introduction.</p>
+<p>Microclimate definition MEB 2026 and link to CC, see <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.71140" class="uri">https://onlinelibrary.wiley.com/doi/10.1111/gcb.71140</a> .</p>
+<p><span class="citation" data-cites="defrenne2024">De Frenne <em>et al.</em> (<a href="99_references.html#ref-defrenne2024" role="doc-biblioref">2024</a>)</span></p>
+<ul>
+<li>Why - microclimate local buffering after debiasing</li>
+<li>What - understory soil, air and surface temperature</li>
+<li>How - Tomst TMS4</li>
+<li>When - 2 hydric years multitemporal analysis with El Nino year</li>
+<li>Where - Paracou with fine scale spatial resolution but only a few ha</li>
+<li>Sites - Vegetation density and microtopography both from lidar</li>
+<li>Reference - ERA5-Land corrected against local MeteoFrance weather data</li>
+<li>Analyses - Discrete Fourier Transform</li>
+<li>Publication - Open data and code with reproducible R + Quarto analyses</li>
+</ul>
+</section>
+<section id="material-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="material-and-methods"><strong>Material and methods</strong></h2>
+<section id="study-site-and-data" class="level3">
+<h3 class="anchored" data-anchor-id="study-site-and-data"><strong>Study site and data</strong></h3>
+<section id="tree-inventories" class="level4">
+<h4 class="anchored" data-anchor-id="tree-inventories">Tree inventories</h4>
+<p>Our study site is a 9-ha subset of the P16 plot located in Paracou, in the commune of Sinnamary, French Guiana (5.258°N, 52.937°W. <a href="#fig-1" class="quarto-xref">Figure&nbsp;<span>1</span></a>). Paracou is characterized by a mean annual temperature of 26 °C and annual precipitation of 3,000–3,100 mm. The wet season lasts from approximately December to July, the dry season from August to November, and there is a shorter dry period around March <span class="citation" data-cites="aguilos2018">(<a href="99_references.html#ref-aguilos2018" role="doc-biblioref">Aguilos <em>et al.</em>, 2018</a>)</span>. The soils in Paracou are predominantly Acrisols with localized patches of sandy Ultisols. The bedrock is a Precambrian metamorphic rock composed of schist and sandstone <span class="citation" data-cites="stahl2011">(<a href="99_references.html#ref-stahl2011" role="doc-biblioref">Stahl <em>et al.</em>, 2011</a>)</span>. Situated within a dissected topography, our study site is characterized by a series of relatively small hills separated by narrow drainage valleys and streams. Hills typically range from 100 to 300 m in diameter and rise approximately 20–35 m above the surrounding terrain, with slopes ranging from 25 to 45% <span class="citation" data-cites="vincent2010">(<a href="99_references.html#ref-vincent2010" role="doc-biblioref"><strong>vincent2010?</strong></a>)</span>. The plot consists of a 300 m × 300 m section of lowland rain forest in which all trees and palms with a diameter at breast height (DBH) ≥ 1 cm were tagged, measured, spatially mapped, and identified. Structurally, our 9ha subplot has a stem density of 4646 (± 363) stems ha-1 and a basal area of 35.6 (± 5.1) m²ha⁻¹ for trees ≥ 1 cm DBH (Sellan, pers. comm.), whereas on the whole P16 mean canopy height was 32 m <span class="citation" data-cites="vincent2012">(<a href="99_references.html#ref-vincent2012" role="doc-biblioref">Vincent <em>et al.</em>, 2012</a>)</span>.</p>
+</section>
+<section id="microclimate-sensors-and-macroclimate-reanalysis" class="level4">
+<h4 class="anchored" data-anchor-id="microclimate-sensors-and-macroclimate-reanalysis">Microclimate sensors and macroclimate reanalysis</h4>
+<p>32 Tomst TMS-4’s sensors were spaced 10 m apart, with a minimum distance of 1 m from the HOBO sensors to avoid ground disturbance caused by the HOBO stakes. Tomst sensors measured air (15-cm), surface (0-cm) and soil (-8-cm) temperatures. Acquisition began on 1 May 2023. with a temporal resolution of 15 minutes and protection against direct light and rain (although some sensors still overheated in the sunshine). The sensors were located across transects that covered topographical gradients and forest canopy openness (<a href="#fig-s1" class="quarto-xref">Figure&nbsp;<span>5</span></a>). Data were retrieved until 30 September 2025 (<a href="#fig-2" class="quarto-xref">Figure&nbsp;<span>2</span></a>).</p>
+<p>We retrieved macroclimatic data from ERA5-Land <span class="citation" data-cites="muñoz-sabater2021a">(<a href="99_references.html#ref-muñoz-sabater2021a" role="doc-biblioref">Muñoz-Sabater <em>et al.</em>, 2021</a>)</span> at both Paracou and at the nearest MétéoFrance weather station from Kourou space center (CSG, <a href="#fig-1" class="quarto-xref">Figure&nbsp;<span>1</span></a>). We also retrieved the public data from the CSG MétéoFrance weather station <span class="citation" data-cites="meteofrance2026">(<a href="99_references.html#ref-meteofrance2026" role="doc-biblioref">Météo-France, 2026</a>)</span>.</p>
+</section>
+<section id="environmental-descriptors" class="level4">
+<h4 class="anchored" data-anchor-id="environmental-descriptors">Environmental descriptors</h4>
+<p>We used high penetration lidar <span class="citation" data-cites="badouard2025">(<a href="99_references.html#ref-badouard2025" role="doc-biblioref">Badouard <em>et al.</em>, 2025</a>)</span> to compute Plant Area Density (PAD) derived from 1m3 voxels using AMAPVox <span class="citation" data-cites="vincent2017">(<a href="99_references.html#ref-vincent2017" role="doc-biblioref"><strong>vincent2017?</strong></a>)</span> and Topographic Wetness Index (TWI) at a 5m pixel resolution using the package RSAGA <span class="citation" data-cites="brenning2008 conrad2015">(<a href="99_references.html#ref-brenning2008" role="doc-biblioref">Brenning, 2008</a>; <a href="99_references.html#ref-conrad2015" role="doc-biblioref">Conrad <em>et al.</em>, 2015</a>)</span>. The TWI characterises surface drainage, the associated water availability gradient and is correlated to the soil fertility gradient on the study site <span class="citation" data-cites="schmitt2021">(<a href="99_references.html#ref-schmitt2021" role="doc-biblioref">Schmitt <em>et al.</em>, 2021</a>)</span>. The TWI is computed as a function of local slope angle and the neighbouring maximum values of drainage area <span class="citation" data-cites="bohner2006">(<a href="99_references.html#ref-bohner2006" role="doc-biblioref">Böhner &amp; Selige, 2006</a>)</span>. We interpolated for each microclimate sensor the PAD vertical column above the sensor with a 3m buffer and the corresponding TWI values (<a href="#fig-s1" class="quarto-xref">Figure&nbsp;<span>5</span></a>). We further aggregated PAD values and in the sum of the understory vegetation below 10-m and upperstory above 10-m.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/f1.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/f1.png" class="img-fluid figure-img" width="1500">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Figure 1: Study sites and temperature time series in French Guiana. (A) Location of French Guiana within South America. (B) Location of the two study sites, Paracou and Centre Spatial Guyanais (CSG), in the Kourou region of French Guiana. (C) Satellite view of the study area showing Paracou, CSG, and Kourou. (D) Comparison of air temperature at CSG from ERA5-Land reanalysis and an in-situ MeteoFrance weather station over one week (April 1–8), showing that ERA5-Land captures the diurnal cycle but underestimates daily temperature maxima. (E) Comparison of bias-corrected ERA5-Land air temperature (“ERA5-Land debiased”) with microclimate measurements at Paracou (air, surface, and soil temperature) over the same period, illustrating the buffering effect of the forest canopy and soil on temperature extremes relative to the free-air reanalysis estimate.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="discrete-fourier-transform-and-statistical-analyses" class="level3">
+<h3 class="anchored" data-anchor-id="discrete-fourier-transform-and-statistical-analyses"><strong>Discrete Fourier Transform and statistical analyses</strong></h3>
+<section id="macroclimate-debiasing" class="level4">
+<h4 class="anchored" data-anchor-id="macroclimate-debiasing">Macroclimate debiasing</h4>
+<p>We debiased ERA5-Land macroclimate data using the relationship between the Fourier coefficients after decomposition of ERA5-Land and the CSG weather station <span class="citation" data-cites="schmittinprep">(<a href="99_references.html#ref-schmittinprep" role="doc-biblioref"><strong>schmittinprep?</strong></a>)</span>. We used the full time series for the Fourier transform, since missing data could not be accommodated. We focused on the microclimate study years 2023–2025. The weather station data were missing only nine measurements across six days, so we filled these using local linear interpolation, yielding 365 and 366 days (2024 being a leap year), each at hourly resolution. This produced a large two-year power spectrum, with most power concentrated at the mean and periods of 24, and 12 hours and their harmonics, as well as between periods of two years and one day. The power ratio between ERA and the weather station showed that ERA power decreased relative to observed power as frequency increased, consistent with a reanalysis smoothing small-scale temporal variations. However, even at low frequencies and periods longer than 24 hours, weather station power remained higher than ERA5-Land power. We used this ratio, computed for the Kourou CSG station, to interpolate the debiased ERA5-Land data back to the Paracou station for 2023–2025.</p>
+</section>
+<section id="microclimate-buffer-computation" class="level4">
+<h4 class="anchored" data-anchor-id="microclimate-buffer-computation">Microclimate buffer computation</h4>
+<p>We decomposed the temperature series for both the debiased macroclimate of ERA5-Land reanalysis in Paracou and the temperature series from Tomst microclimate sensors, which recorded either air, surface or soil temperatures. We used Fourier transform decomposition with a sliding window of five days and a shift of three days, analysing only complete data series. Based on this decomposition, we created power spectra for air temperatures, which highlight the power of temperature variation (°C) per period or frequency (here, period in hours; <span class="citation" data-cites="schmittinprep">(see <a href="99_references.html#ref-schmittinprep" role="doc-biblioref"><strong>schmittinprep?</strong></a> for further explanation on the methodology)</span>). We then computed the microclimate buffers as the ratio of mean temperature and power for the 24-hour period for the Tomst microclimate sensors, compared to debiased macroclimate of ERA5-Land reanalysis.</p>
+</section>
+<section id="spatio-temporal-linear-model" class="level4">
+<h4 class="anchored" data-anchor-id="spatio-temporal-linear-model">Spatio-temporal linear model</h4>
+<p>To assess the drivers of microclimate buffering, we modelled the buffer ratios (temperature and power, see above) as a function of seasonal, interannual and structural forest covariates. For each combination of variable (mean temperature or 24-hour power ratio) and sensor type (air, surface, soil), we fitted a separate linear model, with the buffer ratio as the response variable:</p>
+<p>Ratio ~ Season × Hydric year + TWI + PAD understory + PAD upperstory</p>
+<p>Season was coded as a two-level factor (wet, dry), and hydric year was recorded from the onset of dry-season (1st of August) across calendar-year pairs into a two-level factor contrasting a normal rainfall year (2024–2025) against an El Niño-affected year (2023–2024, “normal” set as the reference level). The interaction between season and hydric year allowed the effect of season on the buffer ratio to differ depending on the prevailing hydrological regime. Topographic Wetness Index (TWI) and Plant Area Density, separated into understory (&lt;10 m) and upperstory (&gt;10 m) components, were included as continuous covariates and standardised prior to fitting, so that their coefficients are directly comparable in magnitude. Models were fitted independently for each period (temperature vs.&nbsp;24-h power) and each sensor type (air, surface, soil).</p>
+</section>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results"><strong>Results</strong></h2>
+<p>Data acquisition resulted in measurements for 32 sensors across three height/depths and two full hydric years. We computed the power spectrum decomposition (see Methods) for the 21,783 five-day windows, with a three-day sliding window (<a href="#fig-2" class="quarto-xref">Figure&nbsp;<span>2</span></a>). We found that daily variations with 24-hour periods and their harmonics drove temperature variations in air, surface, and soil temperatures, all of which had a mean temperature of 25°C. However, power and amplitude were reduced in air temperatures compared to surface and soil temperatures (e.g.&nbsp;power was 1.72°C, 1.07°C, and 0.293°C, respectively, for a period of 24 hours). Focusing on the daily variation with a period of 24 hours, we found amplified power and amplitude during the dry season for air and surface temperatures, particularly during the dry season of 2023–2024 (an El Niño year), whereas the soil signal remained comparatively stable and of low amplitude throughout the study period.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/f2.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/f2.png" class="img-fluid figure-img" width="1500">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Figure 2: Mean power spectrum decomposition and temporal dynamics of the 24-hour power peak. (Left) Mean power spectra (°C) as a function of period (in hours, decreasing from 5 days to a few hours) for air, surface, and soil Tomst sensors, obtained through Fourier decomposition using a 5-day sliding window (3-day shift) over the full acquisition period (May 2023–September 2025). All three panels show power strongly concentrated around the 24-hour period (diurnal cycle) and its 12-hour harmonic, with power decreasing at shorter periods. The intensity of the diurnal peak declines markedly from air to surface to soil, reflecting the progressive damping of the thermal signal with depth. The mean temperature (± SD) over the full period is indicated in each panel (25 ± 1°C for all three compartments). (Right) Time series of power at the 24-hour period, extracted for each sliding window and for each of the 32 sensors (one line per sensor), shown separately for air, surface, and soil from 2023 to 2026. Shaded yellow areas indicate dry seasons, and vertical dashed red lines mark the start of each dry season (or hydric year) considered in the analyses.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>By computing the mean temperature and 24-hour amplitude ratios against the ERA5-Land reanalysis, which was adjusted for a local weather station (see Methods), we found that the forest microclimate generally has a buffering effect relative to the macroclimate (see <a href="#fig-3" class="quarto-xref">Figure&nbsp;<span>3</span></a>; all mean amplitude ratios remain below 1). The adjusted ERA5-Land mean temperature was 26.7°C, with an associated 24-hour daily amplitude power of 2.09°C. This corresponded to a buffer of 1.3–1.5°C (5–6%) on mean air, surface and soil temperatures, as well as to a buffer of 1.5–2.0°C (71–96%) on associated 24-hour daily amplitude powers . The buffering effect was strongest and most consistent for soil, intermediate for the surface and weakest for the air. The buffering was more pronounced in the dry season than in the wet season, particularly for the 24-hour amplitude ratio. However, differences between El Niño and normal hydric years are unclear.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/f3.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/f3.png" class="img-fluid figure-img" width="1500">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Figure 3: Microclimate buffer ratios of mean temperature and 24-hour amplitude across years, seasons, and sensor depth. For each of the 32 microclimate sensors, points show the median ratio between the Tomst-measured microclimate and the debiased ERA5-Land macroclimate, for mean temperature (x-axis) and for the 24-hour power amplitude (y-axis), computed across all sliding windows within each season and hydric year. Thick segments indicate the 50% distribution (25th–75th percentile) and thin segments the 90% distribution (5th–95th percentile) of the ratio for each sensor. Points are colored by sensor type: air (blue), surface (green), and soil (orange). Panels are split by season (columns: dry vs.&nbsp;wet) and by hydric year (rows: El Niño year 2023–2024, top; normal year 2024–2025, bottom). Grey vertical and horizontal reference lines mark a ratio of 1 (i.e., no difference from the macroclimate), and the horizontal arrows summarize the interpretation of the x-axis, from buffering (ratio &lt; 1, microclimate cooler/less variable than macroclimate) to amplifying (ratio &gt; 1, microclimate warmer/more variable than macroclimate).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We further investigated the variations in mean temperature and 24-hour amplitude ratios using a spatio-temporal linear model (<a href="#fig-4" class="quarto-xref">Figure&nbsp;<span>4</span></a>). For mean temperature, we found that the dry season and the El Niño year each strengthened buffering across air, surface, and soil independently, but their interaction weakened it. Mean temperature models explained a substantial proportion of the variance for all sensor types (R² = 0.68–0.81). For the daily 24-hour amplitude ratio, the effects varied more between the air, surface, and soil. The El Niño year strengthened buffering in the air, but not in the surface or soil. Meanwhile, the dry season × El Niño year interaction strongly weakened buffering (shifting towards amplification) for the air and surface amplitude. This effect was not seen in the soil. The daily 24-hour amplitude ratio model fit was more limited for soil and surface (R² = 0–0.18), but stronger for air (R² = 0.64), reflecting weaker or non-significant relationships for surface and soil amplitude ratios. Spatial covariates linked to topography (TWI) and vegetation structure (PAD) had comparatively small and largely insignificant effects. However, there were two interesting exceptions: (i) PAD only in the understory had a buffering effect on the surface and air mean and daily 24-hour amplitude ratios, and (ii) TWI had a buffering effect on the air mean and daily 24-hour amplitude ratios.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/f4.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/f4.png" class="img-fluid figure-img" width="1050">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Figure 4: Drivers of microclimate buffer ratios with coefficients from the spatio-temporal linear models. Points show model-estimated coefficients (with 95% confidence intervals) from the linear models relating the mean temperature ratio (left) and the 24-hour amplitude ratio (right) to season, hydric year, their interaction, and forest structural covariates (TWI, PAD understory, PAD upperstory), fitted separately for air (blue), surface (green), and soil (orange) sensors. Coefficients are shown relative to the reference levels (wet season, normal hydric year), so that “Dry season” and “El Niño year” represent the shift in ratio associated with each condition, and “Dry season × El Niño year” represents their interaction. Transparent points indicate coefficients that are not statistically significant (95% CI overlapping zero). Solid points indicate significant effects. The vertical grey line marks a coefficient of zero (no effect), and the horizontal arrows summarize the interpretation of the x-axis, from a stronger buffering effect (+buffer, coefficient &lt; 0) to a weaker or reversed buffering effect (−buffer, coefficient &gt; 0). Marginal R² values for each model are given in the top-right corner of each panel, colored by sensor type. Hypotheses testing behind the linear model are shown in <a href="#fig-s2" class="quarto-xref">Figure&nbsp;<span>6</span></a>. Detailed regressions parameters and significance are given in <span class="citation" data-cites="tab-s1">(<a href="99_references.html#ref-tab-s1" role="doc-biblioref"><strong>tab-s1?</strong></a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion"><strong>Discussion</strong></h2>
+<p>Understorey buffering in Paracou was strong under normal conditions. On average, the air, surface and soil were 1.3–1.5°C cooler, and the daily temperature amplitude was reduced by 1.5–2.0°C. However, this buffering was not a fixed property of the forest. During the dry season of the 2023–24 El Niño event, it weakened considerably, particularly with regard to the daily amplitude of air and surface temperatures. This suggests that there may be a tipping point when the forest is subjected to compound heat–drought stress. Season and hydric year explained far more variation than vegetation structure or topography at this fine scale. Therefore, microrefugia models based solely on structure may overestimate the protection that forest understories will offer during future El Niño events. Replication across sites and multiple ENSO cycles is needed to test this.</p>
+<section id="overall-buffering-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="overall-buffering-pattern"><strong>Overall buffering pattern</strong></h3>
+<p>We observed an overall buffering pattern of air, surface and soil temperatures in the Paracou tropical forest. Mean temperature was 1.3–1.5°C cooler and (24-hour) amplitude power was reduced by 1.5–2.0°C. Mean and daily (24-hour) amplitude ratios remained below 1, consistent with pan-tropical buffering of temperature variation by the forest understorey <span class="citation" data-cites="ismaeel2024">(global mean of 1.6°C, <a href="99_references.html#ref-ismaeel2024" role="doc-biblioref">Ismaeel <em>et al.</em>, 2024</a>)</span>. This finding is also consistent with global buffering studies that highlighted strong buffering in the tropics <span class="citation" data-cites="defrenne2019">(<a href="99_references.html#ref-defrenne2019" role="doc-biblioref">De Frenne <em>et al.</em>, 2019</a>)</span>. Our work complements biogeographical studies by exploring local variation on a finer spatial and temporal scale than previous studies <span class="citation" data-cites="lembrechts2020">(<a href="99_references.html#ref-lembrechts2020" role="doc-biblioref">Lembrechts <em>et al.</em>, 2020</a>)</span>. Temperature amplification was rarely observed, only for daily amplitude ratios in the wet season, mainly in normal years during the period of the lowest observed mean temperature, when the soil might have a warming effect.</p>
+<p>The strength of the buffering increased with distance from the atmosphere-vegetation interface. Topsoil experienced higher buffering than the surface, which in turn experienced higher buffering than air temperatures. This is in line with previous studies of temperate <span class="citation" data-cites="gril2024">(<a href="99_references.html#ref-gril2024" role="doc-biblioref"><strong>gril2024?</strong></a>)</span> and tropical <span class="citation" data-cites="ewers2013">(<a href="99_references.html#ref-ewers2013" role="doc-biblioref">Ewers &amp; Banks-Leite, 2013</a>)</span> forests. This was particularly evident for mean temperature, whereas the effect was less pronounced for daily amplitude (24-hour), when the buffering could be similar across layers and even inversely proportional during the wet season. This is consistent with increasing thermal inertia and decoupling from atmospheric forcing with depth, as demonstrated by previous modelling studies <span class="citation" data-cites="zhang2023">(<a href="99_references.html#ref-zhang2023" role="doc-biblioref">Zhang <em>et al.</em>, 2023</a>)</span>. Topsoil temperature was almost insensitive to season, year or vegetation structure (R² = 0.05).</p>
+</section>
+<section id="seasonal-and-interannual-forcing-dominate-over-local-structure" class="level3">
+<h3 class="anchored" data-anchor-id="seasonal-and-interannual-forcing-dominate-over-local-structure"><strong>Seasonal and interannual forcing dominate over local structure</strong></h3>
+<p>Statistical modelling revealed that the dry season strengthened the buffering of mean temperatures across air, surface, and soil temperatures during the 2024–25 normal hydrological year. This contradicts a previous pan-tropical analysis <span class="citation" data-cites="ismaeel2024">(<a href="99_references.html#ref-ismaeel2024" role="doc-biblioref">Ismaeel <em>et al.</em>, 2024</a>)</span>, but is consistent with recent findings in French Guiana <span class="citation" data-cites="hes2025">(<a href="99_references.html#ref-hes2025" role="doc-biblioref">Hes <em>et al.</em>, 2025</a>)</span>. This raises the question of whether the difference is spatial (e.g.&nbsp;specific to the Guiana Shield) or methodological. As <span class="citation" data-cites="ismaeel2024">Ismaeel <em>et al.</em> (<a href="99_references.html#ref-ismaeel2024" role="doc-biblioref">2024</a>)</span> demonstrated a congruent increase in the diurnal temperature range during the dry season in the Amazon region, a methodological difference is a plausible explanation. Applying a similar decomposition to a larger-scale dataset <span class="citation" data-cites="schmittinprep">(<a href="99_references.html#ref-schmittinprep" role="doc-biblioref"><strong>schmittinprep?</strong></a>)</span> would help to resolve this.</p>
+<p>The El Niño year of 2023–24 also had a strengthening effect, suggesting that processes such as shading and cooling remain effective even under moderate stress during the El Niño wet season. However, the interaction between the dry season and El Niño reversed this pattern, with the most striking example being the weakening of microclimate buffering in the 24-hour air and surface temperature amplitude ratio. This interaction indicates that the threshold at which the forest microclimate buffering system breaks down under heat–drought stress may be approaching. This is consistent with the pattern identified by <span class="citation" data-cites="hes2025">Hes <em>et al.</em> (<a href="99_references.html#ref-hes2025" role="doc-biblioref">2025</a>)</span> in Paracou, where buffer loss was observed during the 2023–24 dry season. However, the response of other sites in French Guiana during the same period differed in <span class="citation" data-cites="hes2025">Hes <em>et al.</em> (<a href="99_references.html#ref-hes2025" role="doc-biblioref">2025</a>)</span>, highlighting the need for a framework that can distinguish between the different effects of season, hydric years, and buffer temporal resolution. Indeed, our methods could be applied to previous and future temperature time series, given that El Niño events are becoming more frequent. Examples include the past 2015/16 El Niño event <span class="citation" data-cites="jimenezmunoz2016">(<a href="99_references.html#ref-jimenezmunoz2016" role="doc-biblioref"><strong>jimenezmunoz2016?</strong></a>)</span>, the 2023/24 El Niño event studied here, and the incoming 2026/27 El Niño event <span class="citation" data-cites="liu2026">(<a href="99_references.html#ref-liu2026" role="doc-biblioref">Liu <em>et al.</em>, 2026</a>)</span>.</p>
+<p>The interaction between the dry season and the 2023–24 El Niño event suggests that the combined effect of these climatic extremes was greater than, and opposite to, their individual effects, resulting in loss of thermal buffering capacity. Furthermore, temperature increase is not the only climatic factor impacting vegetation; hot days are also linked to a precipitation deficit <span class="citation" data-cites="mueller2012">(<a href="99_references.html#ref-mueller2012" role="doc-biblioref">Mueller &amp; Seneviratne, 2012</a>)</span>, resulting in higher atmospheric demand for water (high VPD) and a higher soil water deficit, resulting in compound dry and hot events. These findings mirror the results of recent remote sensing studies of Amazonian vegetation using radar, which indicate a severe decline in forest function during severe droughts <span class="citation" data-cites="tao2022">(<a href="99_references.html#ref-tao2022" role="doc-biblioref">Tao <em>et al.</em>, 2022</a>)</span>.</p>
+<p>Interestingly, the interaction effect was concentrated in the 24-hour daily amplitude rather than the mean temperature. This implies that the primary biological risk during hot and dry events is an increase in the daily thermal range (i.e.&nbsp;larger temperature fluctuations) in the understorey, rather than an increase in the average temperature. This is highly relevant when interpreting the thermal tolerance and heat stress exposure of trees, plants, and more generally, understorey organisms. Indeed, thermophilization and the climatic lag in forest plant communities are primarily controlled by microclimate <span class="citation" data-cites="zellweger2020">(<a href="99_references.html#ref-zellweger2020" role="doc-biblioref">Zellweger <em>et al.</em>, 2020</a>)</span>. Leaf temperature increases non-linearly with ambient air <span class="citation" data-cites="doughty2023">(<a href="99_references.html#ref-doughty2023" role="doc-biblioref"><strong>doughty2023?</strong></a>)</span>, including microclimate temperature in the understorey. Critical thresholds are starting to be observed in canopies <span class="citation" data-cites="doughty2023">(<a href="99_references.html#ref-doughty2023" role="doc-biblioref"><strong>doughty2023?</strong></a>)</span>, and these could extend to the understorey if the loss of buffering during El Niño dry seasons is underestimated. The impact generally depends on both the degree of warming and the number of species at risk, as well as their physiological sensitivity to warming and their capacity for behavioural and physiological compensation <span class="citation" data-cites="huey2009">(<a href="99_references.html#ref-huey2009" role="doc-biblioref">Huey <em>et al.</em>, 2009</a>)</span>. Tropical animals may experience a slower increase in temperature, but they may already be approaching temperature limits <span class="citation" data-cites="tewksbury2008">(<a href="99_references.html#ref-tewksbury2008" role="doc-biblioref">Tewksbury <em>et al.</em>, 2008</a>)</span>. Almost two decades ago, thermoconformer lizards from tropical forests were already shown to be at risk <span class="citation" data-cites="huey2009">(<a href="99_references.html#ref-huey2009" role="doc-biblioref">Huey <em>et al.</em>, 2009</a>)</span>.</p>
+</section>
+<section id="role-of-vegetation-structure-and-topography" class="level3">
+<h3 class="anchored" data-anchor-id="role-of-vegetation-structure-and-topography"><strong>Role of vegetation structure and topography</strong></h3>
+<p>Other than the temporal descriptors, the statistical modelling revealed spatial effects: a vertical effect due to vegetation density and a horizontal effect due to topography. The density of understory vegetation, represented by plant area density below 10 metres and not that of the upper story (&gt;10 metres), had a significant effect on the 24-hour amplitude ratio for surface and air temperatures. This supports the idea that near-ground vegetation plays a role in stabilising the microclimate independently of the canopy cover above 10 metres. Previous studies in temperate forests have highlighted the role of vegetation <span class="citation" data-cites="gril2023 davis2019">(<a href="99_references.html#ref-davis2019" role="doc-biblioref">Davis <em>et al.</em>, 2019</a>; <a href="99_references.html#ref-gril2023" role="doc-biblioref">Gril <em>et al.</em>, 2023</a>)</span>, although they did not specify particular layers. However, these studies were conducted in shorter, less vertically complex forests. In contrast, <span class="citation" data-cites="jucker2018">(<a href="99_references.html#ref-jucker2018" role="doc-biblioref"><strong>jucker2018?</strong></a>)</span> also found an effect of whole vegetation structure through canopy height in Malaysian forests up to 80 m tall. Their study, however, was conducted on a landscape scale, with a wider variation in vegetation structure (from 0 to 80 m), which might explain why we did not observe the effect of the entire vegetation structure column. At a finer spatial scale, <span class="citation" data-cites="tymen2017">(<a href="99_references.html#ref-tymen2017" role="doc-biblioref"><strong>tymen2017?</strong></a>)</span> showed in French Guiana that light penetration accounted for around half of the variation in maximum understorey temperature at Nouragues. While their findings emphasise the significant impact of canopy openings on understorey thermal conditions, our study indicates that vegetation density beneath the upper canopy may also play a role in microclimate buffering. This is particularly relevant given that differences in aerial LiDAR acquisition can result in understorey vegetation being undersampled, as was the case for <span class="citation" data-cites="tymen2017">(<a href="99_references.html#ref-tymen2017" role="doc-biblioref"><strong>tymen2017?</strong></a>)</span> and in previous studies, compared to the high-penetration acquisition used here <span class="citation" data-cites="badouard2025">(<a href="99_references.html#ref-badouard2025" role="doc-biblioref">Badouard <em>et al.</em>, 2025</a>)</span>. In our study, past forest gaps may have resulted in locally dense understorey vegetation owing to lateral light access for intermediate strata, which may favour increased buffering near the ground at fine spatial scale.</p>
+<p>At a fine scale of a few metres, topography was represented by the topographic wetness index and had a minor effect. This suggests that, at a fine scale, topography and hydrology are less important than seasonal and interannual climate in shaping the buffering capacity at the Paracou station. However, this does not negate the effect at a landscape scale, given the small size of our study area. Indeed, <span class="citation" data-cites="baraloto2010">Baraloto &amp; Couteron (<a href="99_references.html#ref-baraloto2010" role="doc-biblioref">2010</a>)</span>, also working at Paracou, identified topographic position as a major driver of understory microclimate, with plateau, midslope and bottomslope positions explaining 26% of midday air temperature and 48% of soil temperature variation. However, their measurements were restricted to a single midday snapshot during the dry season (September 1999), whereas our continuous measurements capture temporal dynamics and allow us to assess the relative importance of spatial and temporal drivers across different conditions. <span class="citation" data-cites="tymen2017">(<a href="99_references.html#ref-tymen2017" role="doc-biblioref"><strong>tymen2017?</strong></a>)</span> demonstrated the importance of microtopography on relative humidity at the Nouragues station in French Guiana, which was not studied here but is likely to be indirectly linked to air temperature. <span class="citation" data-cites="davis2019">Davis <em>et al.</em> (<a href="99_references.html#ref-davis2019" role="doc-biblioref">2019</a>)</span> found a stronger effect of topography on driving near-surface maximum and minimum temperatures in a mountain context with stronger topography than that studied here. Similarly, <span class="citation" data-cites="jucker2018">(<a href="99_references.html#ref-jucker2018" role="doc-biblioref"><strong>jucker2018?</strong></a>)</span> found that topography was a strong predictor of local microclimate in Malaysian forests, with elevation and terrain curvature primarily constraining daily mean temperatures, but at landscape scale. Once again, this calls for extending our study to a larger area to explore the effect of topography.</p>
+<p>In general, our study revealed that forest vegetation, forest structure, and topography explained little variance compared to the effects of season and hydric year, suggesting that vegetation structure only marginally moderates buffering and that seasonal and interannual extremes are the main drivers. However, this interpretation should be tempered by the small study area, which exhibited reduced variation in vegetation density (6±3 m2.m-2) and reduced topographic variation compared to previous studies <span class="citation" data-cites="baraloto2010">(<a href="99_references.html#ref-baraloto2010" role="doc-biblioref">Baraloto &amp; Couteron, 2010</a>)</span>, and was based on only two transects.</p>
+</section>
+<section id="broader-implications" class="level3">
+<h3 class="anchored" data-anchor-id="broader-implications"><strong>Broader implications</strong></h3>
+<p>Our results and those of previous studies caution against microrefugia models based solely on vegetation structure, since even dense, structurally intact old-growth forests lost their typical buffering capacity during a compound heat–drought event <span class="citation" data-cites="trew2024">(<a href="99_references.html#ref-trew2024" role="doc-biblioref">Trew <em>et al.</em>, 2024</a>)</span>. Thermal refugia depend on the climate state rather than being a fixed property of the habitat. Using sensors and modelling, <span class="citation" data-cites="delombaerde2022">De Lombaerde <em>et al.</em> (<a href="99_references.html#ref-delombaerde2022" role="doc-biblioref">2022</a>)</span> predicted greater buffering capacity for tropical forests in a changing climate, without considering the compound effect of El Niño. However, El Niño is expected to become more frequent and severe due to climate change <span class="citation" data-cites="cai2014 cai2021">(<a href="99_references.html#ref-cai2014" role="doc-biblioref">Cai <em>et al.</em>, 2014</a>, <a href="99_references.html#ref-cai2021" role="doc-biblioref">2021</a>)</span>, including the current ‘super El Niño’ <span class="citation" data-cites="liu2026">(<a href="99_references.html#ref-liu2026" role="doc-biblioref">Liu <em>et al.</em>, 2026</a>)</span>. This could reduce the ability of forest understories to protect Amazonian forests during droughts and heatwaves (when buffering is most needed).</p>
+<p>Our findings highlight the need for more extensive physiological and phenological monitoring (e.g.&nbsp;leaf area dynamics and canopy water status) during future El Niño events, in order to identify the factors that cause temperature buffer collapse, such as stomatal closure, reduced transpirational cooling and leaf shedding. Preliminary analyses have identified a decrease in gross primary productivity in Amazonian forests during the 2023–24 El Niño event, accompanied by an increase in vapour pressure deficit <span class="citation" data-cites="meunierinprep">(<a href="99_references.html#ref-meunierinprep" role="doc-biblioref"><strong>meunierinprep?</strong></a>)</span>. This leads to a decrease in stomatal conductance and photosynthesis <span class="citation" data-cites="slot2024">(<a href="99_references.html#ref-slot2024" role="doc-biblioref">Slot <em>et al.</em>, 2024</a>)</span> because VPD exerts stronger control over stomatal closure than temperature does directly. Closing stomata reduces tree transpiration and thus the cooling of the canopy by transpiration. During dry seasons, tropical forests also rejuvenate the canopy, which is associated with leaf shedding that controls leaf transpiration <span class="citation" data-cites="gong2022">(<a href="99_references.html#ref-gong2022" role="doc-biblioref">Gong <em>et al.</em>, 2022</a>)</span>. Recent literature has revealed the renewed importance of phenology and leaf shedding for Amazonian and tropical forest fluxes, which must be considered to improve our understanding of the loss of buffering capacity during a compound El Niño dry season <span class="citation" data-cites="wu2017 wu2021 yang2021 chen2019">(<a href="99_references.html#ref-wu2017" role="doc-biblioref">Wu <em>et al.</em>, 2017</a>; <a href="99_references.html#ref-wu2021" role="doc-biblioref">Wu <em>et al.</em>, 2021</a>; <a href="99_references.html#ref-yang2021" role="doc-biblioref">Yang <em>et al.</em>, 2021</a>; <a href="99_references.html#ref-chen2019" role="doc-biblioref"><strong>chen2019?</strong></a>)</span>.</p>
+</section>
+<section id="limitations-and-future-directions" class="level3">
+<h3 class="anchored" data-anchor-id="limitations-and-future-directions"><strong>Limitations and future directions</strong></h3>
+<p>Our results are based on a single 9-hectare plot and a comparison of just two hydric years (one El Niño and one normal), which imposes a strong limit on the generality of our interpretation. Replication is required to confirm the applicability of the buffering-collapse threshold. Data acquisition has been underway for several years at other sites (e.g.&nbsp;the Nouragues station), but similar analyses require fine-scale vegetation descriptions using LiDAR <span class="citation" data-cites="badouard2025">(<a href="99_references.html#ref-badouard2025" role="doc-biblioref">Badouard <em>et al.</em>, 2025</a>)</span>, multi-year monitoring of extreme climatic events and, above all, good, fine-scale spatialisation of sensors in order to correctly link microtopography and vegetation conditions to each sensor. As microclimate acquisitions are expanding (French Guiana, 2014–2024, <span class="citation" data-cites="hes2025">(<a href="99_references.html#ref-hes2025" role="doc-biblioref">Hes <em>et al.</em>, 2025</a>)</span>; tropics, 2016–2021, <span class="citation" data-cites="ismaeel2024">(<a href="99_references.html#ref-ismaeel2024" role="doc-biblioref">Ismaeel <em>et al.</em>, 2024</a>)</span>; all key biomes, 50 countries, <span class="citation" data-cites="lembrechts2020">(<a href="99_references.html#ref-lembrechts2020" role="doc-biblioref">Lembrechts <em>et al.</em>, 2020</a>)</span>), future studies could adopt our approach to test its generality across different types of vegetation and extreme climate events.</p>
+<p>However, fine-scale microclimate data remain scarce among the cited studies, especially in tropical forests and even more so in the Amazon during El Niño events. Existing microclimate studies tend to rely on short campaigns and have coarser temporal and spatial resolutions, which limits their ability to detect threshold and interaction effects. The exceptions are mainly linked to studies on fragmentation. In order to predict where and when thermal refugia will fail under future climate extremes, we need to expand the number of long-term microclimate monitoring stations (spanning multiple ENSO cycles) in the tropics. By providing a rare empirical insight into the effects of compound climatic stress, our dataset is a first step in this direction.</p>
+</section>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements"><strong>Acknowledgements</strong></h2>
+<ul>
+<li>ANR ALT ANR-21-CE32-0009</li>
+<li>PEPR FORESTT MONITOR ANR-24-PEFO-0003</li>
+<li>PEPR FORESTT MICROFOREST ANR-24-PEFO-0007</li>
+<li>thematic network FORTRAN (GDR 2199: <a href="https://www.fortran.cnrs.fr/" class="uri">https://www.fortran.cnrs.fr/</a>)</li>
+<li>ALT measurements teams?</li>
+</ul>
+</section>
+<section id="author-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="author-contributions"><strong>Author contributions</strong></h2>
+<p>Concept: Sylvain Schmitt, Erwan Hingant, Jonathan Lenoir</p>
+<p>Data: Vincyane Badouard, Géraldine Derroire, Léa Françoise, Giacomo Sellan, Grégoire Vincent, Jérôme Chave</p>
+<p>Analyses: Sylvain Schmitt, Jonathan Lenoir</p>
+<p>Writing (lead): Sylvain Schmitt, Jonathan Lenoir</p>
+<p>All authors contributed critically to the drafts and gave final approval for publication.</p>
+</section>
+<section id="data-availability" class="level2">
+<h2 class="anchored" data-anchor-id="data-availability"><strong>Data availability</strong></h2>
+<p>Code: <a href="https://github.com/sylvainschmitt/microclimalt" class="uri">https://github.com/sylvainschmitt/microclimalt</a> + Zenodo DOI</p>
+<p>Data: What can be shared and how?</p>
+</section>
+<section id="supplementary-material" class="level2">
+<h2 class="anchored" data-anchor-id="supplementary-material"><strong>Supplementary material</strong></h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/fs1.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-s1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-s1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fs1.png" class="img-fluid figure-img" width="1500">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-s1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Figure S1: Sensor locations and forest structural and topographic descriptors at Paracou. (Top left) Spatial layout of the 32 Tomst microclimate sensors within the 9-ha study plot (divided into 1-ha subplots), colored by canopy condition: closed canopy (red), gap (green), and gap border (blue). Sensors were arranged along transects designed to capture variation in canopy openness across the plot. (Top right) Plant Area Density (PAD, m² m⁻³) summed over the understory (&lt;10 m height), derived from lidar-based voxel data (1 m³ resolution) using AMAPVox, with sensor locations overlaid (black dots). (Bottom left) PAD summed over the upperstory (&gt;10 m height), shown at the same resolution and with the same sensor overlay, highlighting canopy gaps as areas of low PAD. (Bottom right) Topographic Wetness Index (TWI) at 5-m pixel resolution, with sensor locations overlaid, showing the topographic gradient (e.g., valley bottoms with high TWI vs.&nbsp;ridges with low TWI) captured by the sensor transects. For each sensor, PAD (understory and upperstory) and TWI values were extracted using a 3-m buffer around the sensor location for use as covariates in the statistical models.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/fs3.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-s2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-s2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fs3.png" class="img-fluid figure-img" width="1500">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-s2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Figure S2: Model diagnostics for the linear model of the 24-hour amplitude ratio (air). Diagnostic checks for the linear model relating the air 24-hour amplitude ratio to season, hydric year, their interaction, TWI, PAD understory, and PAD upperstory. (Top left) Posterior predictive check comparing the density of the observed ratio (green) to densities simulated from the fitted model (blue), showing good overall agreement in shape and location. (Top right) Linearity check: residuals plotted against fitted values, with a smoothed reference line remaining close to zero across the range of fitted values, indicating no strong non-linear pattern. (Middle left) Homogeneity of variance: square-root of standardized residuals against fitted values, with a roughly flat smoothed trend suggesting no strong heteroscedasticity, though residual spread increases slightly at higher fitted values. (Middle right) Influential observations: standardized residuals against leverage, with dashed contour lines indicating a Cook s distance threshold of 0.9; all points fall within the contours, indicating no highly influential observations. (Bottom left) Collinearity: variance inflation factors (VIF, log scale) for each model term, all falling within the “low” range (VIF &lt; 5, green shading), indicating no problematic collinearity among predictors. (Bottom right) Normality of residuals: quantile-quantile plot of standardized residuals against the standard normal distribution, showing residuals following the reference line closely except for minor deviations in the upper tail. Overall, the model satisfies standard linear regression assumptions reasonably well.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/tables1.html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="figures/tables1.html" class="img-fluid"></p>
+<figcaption>Table S1: Summary of the six linear models of microclimate buffer ratios. Model coefficients (estimates, 95% confidence intervals, and p-values) for the linear models relating mean temperature ratio (period “0”) and 24-hour amplitude ratio (period “24”) to season, hydric year, their interaction, TWI, PAD understory, and PAD upperstory, fitted separately for air, surface, and soil sensors (six models total, each n = 120 sensor–window observations). Bold p-values indicate statistically significant terms (p &lt; 0.05). Across all six models, R² ranged from 0.05 (24-h amplitude ratio, soil) to 0.82 (mean temperature ratio, soil), explaining on average 62% of the variance in buffer ratios; models of the mean temperature ratio consistently outperformed those of the 24-hour amplitude ratio, and among the amplitude-ratio models, air was best explained (R² = 0.66) while soil was essentially unexplained by the included predictors (R² = 0.05).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-aguilos2018" class="csl-entry" role="listitem">
+Aguilos M, Stahl C, Burban B et al. (2018) <a href="https://doi.org/10.3390/f10010014">Interannual and seasonal variations in ecosystem transpiration and water use efficiency in a tropical rainforest</a>. <em>Forests</em>, <strong>10</strong>, 14.
+</div>
+<div id="ref-badouard2025" class="csl-entry" role="listitem">
+Badouard V, Verley P, Bai Y et al. (2025) <a href="https://doi.org/10.1016/j.agrformet.2025.110713">Using high penetration airborne LiDAR and dense UAV scanning to produce accurate 3D maps of light availability in dense tropical forest</a>. <em>Agricultural and Forest Meteorology</em>, <strong>373</strong>, 110713.
+</div>
+<div id="ref-baraloto2010" class="csl-entry" role="listitem">
+Baraloto C, Couteron P (2010) <a href="https://doi.org/10.1111/j.1744-7429.2009.00620.x">Fine-scale microhabitat heterogeneity in a french guianan forest</a>. <em>Biotropica</em>, <strong>42</strong>, 420–428.
+</div>
+<div id="ref-bohner2006" class="csl-entry" role="listitem">
+Böhner J, Selige T (2006) Spatial prediction of soil attributes using terrain analysis and climate regionalisation. In: <em>SAGA-analyses and modelling applications</em>. Goltze.
+</div>
+<div id="ref-brenning2008" class="csl-entry" role="listitem">
+Brenning A (2008) Statistical geocomputing combining r and SAGA: The example of landslide susceptibility analysis with generalized additive models. <em>Hamburger Beitr<span class="nocase">ä</span>ge zur Physischen Geographie und Landschafts<span class="nocase">ö</span>kologie</em>, <strong>19</strong>, 410.
+</div>
+<div id="ref-cai2014" class="csl-entry" role="listitem">
+Cai W, Borlace S, Lengaigne M et al. (2014) <a href="https://doi.org/10.1038/nclimate2100">Increasing frequency of extreme <span>El Niño</span> events due to greenhouse warming</a>. <em>Nature Climate Change</em>, <strong>4</strong>, 111–116.
+</div>
+<div id="ref-cai2021" class="csl-entry" role="listitem">
+Cai W, Santoso A, Collins M et al. (2021) <a href="https://doi.org/10.1038/s43017-021-00199-z">Changing <span>El Niño</span>–<span>Southern Oscillation</span> in a warming climate</a>. <em>Nature Reviews Earth &amp; Environment</em>, <strong>2</strong>, 628–644.
+</div>
+<div id="ref-conrad2015" class="csl-entry" role="listitem">
+Conrad O, Bechtel B, Bock M et al. (2015) <a href="https://doi.org/10.5194/gmd-8-1991-2015">System for automated geoscientific analyses (SAGA) v. 2.1.4</a>. <em>Geoscientific Model Development</em>, <strong>8</strong>, 1991–2007.
+</div>
+<div id="ref-davis2019" class="csl-entry" role="listitem">
+Davis FW, Synes NW, Fricker GA, McCullough IM, Serra-Diaz JM, Franklin J, Flint AL (2019) <a href="https://doi.org/10.1016/j.agrformet.2019.02.015"><span>LiDAR</span>-derived topography and forest structure predict fine-scale variation in daily surface temperatures in oak savanna and conifer forest landscapes</a>. <em>Agricultural and Forest Meteorology</em>, <strong>269–270</strong>, 192–202.
+</div>
+<div id="ref-defrenne2019" class="csl-entry" role="listitem">
+De Frenne P, Zellweger F, Rodríguez-Sánchez F et al. (2019) <a href="https://doi.org/10.1038/s41559-019-0842-1">Global buffering of temperatures under forest canopies</a>. <em>Nature Ecology &amp; Evolution</em>, <strong>3</strong>, 744–749.
+</div>
+<div id="ref-defrenne2024" class="csl-entry" role="listitem">
+De Frenne P, Beugnon R, Klinges D et al. (2024) <a href="https://doi.org/10.1111/2041-210x.14476">Ten practical guidelines for microclimate research in terrestrial ecosystems</a>. <em>Methods in Ecology and Evolution</em>, <strong>16</strong>, 269–294.
+</div>
+<div id="ref-delombaerde2022" class="csl-entry" role="listitem">
+De Lombaerde E, Vangansbeke P, Lenoir J et al. (2022) <a href="https://doi.org/10.1016/j.scitotenv.2021.151338">Maintaining forest cover to enhance temperature buffering under future climate change</a>. <em>Science of The Total Environment</em>, <strong>810</strong>, 151338.
+</div>
+<div id="ref-ewers2013" class="csl-entry" role="listitem">
+Ewers RM, Banks-Leite C (2013) <a href="https://doi.org/10.1371/journal.pone.0058093">Fragmentation <span>Impairs</span> the <span>Microclimate Buffering Effect</span> of <span>Tropical Forests</span></a>. <em>PLOS ONE</em>, <strong>8</strong>, e58093.
+</div>
+<div id="ref-gong2022" class="csl-entry" role="listitem">
+Gong F, Chen X, Yuan W et al. (2022) <a href="https://doi.org/10.1016/j.jag.2022.102698">Partitioning of three phenology rhythms in <span>American</span> tropical and subtropical forests using remotely sensed solar-induced chlorophyll fluorescence and field litterfall observations</a>. <em>International Journal of Applied Earth Observation and Geoinformation</em>, <strong>107</strong>, 102698.
+</div>
+<div id="ref-gril2023" class="csl-entry" role="listitem">
+Gril E, Laslier M, Gallet-Moron E et al. (2023) <a href="https://doi.org/10.1016/j.rse.2023.113820">Using airborne <span>LiDAR</span> to map forest microclimate temperature buffering or amplification</a>. <em>Remote Sensing of Environment</em>, <strong>298</strong>, 113820.
+</div>
+<div id="ref-hes2025" class="csl-entry" role="listitem">
+Hes G, Badouard V, Burban B et al. (2025) <a href="http://dx.doi.org/10.21203/rs.3.rs-6905664/v1">East amazon forest understory temperatures reached a record high in 2023-2024</a>.
+</div>
+<div id="ref-huey2009" class="csl-entry" role="listitem">
+Huey RB, Deutsch CA, Tewksbury JJ, Vitt LJ, Hertz PE, Álvarez Pérez HJ, Garland T Jr (2009) <a href="https://doi.org/10.1098/rspb.2008.1957">Why tropical forest lizards are vulnerable to climate warming</a>. <em>Proceedings of the Royal Society B: Biological Sciences</em>, <strong>276</strong>, 1939–1948.
+</div>
+<div id="ref-ismaeel2024" class="csl-entry" role="listitem">
+Ismaeel A, Tai APK, Santos EG et al. (2024) <a href="https://doi.org/10.1038/s41467-024-44734-0">Patterns of tropical forest understory temperatures</a>. <em>Nature Communications</em>, <strong>15</strong>, 549.
+</div>
+<div id="ref-lembrechts2020" class="csl-entry" role="listitem">
+Lembrechts JJ, Aalto J, Ashcroft MB et al. (2020) <a href="https://doi.org/10.1111/gcb.15123"><span>SoilTemp</span>: <span>A</span> global database of near-surface temperature</a>. <em>Global Change Biology</em>, <strong>26</strong>, 6616–6629.
+</div>
+<div id="ref-liu2026" class="csl-entry" role="listitem">
+Liu Y, Hu Z-Z, Zhang S, Sun L, Sheng C, Tan W (2026) <a href="https://doi.org/10.59717/j.xinn-geo.2026.100236">A strong <span>El Niño</span> developing in 2026 could drive global surface temperatures to record highs</a>. <em>The Innovation Geoscience</em>, <strong>4</strong>, 100236.
+</div>
+<div id="ref-meteofrance2026" class="csl-entry" role="listitem">
+Météo-France (2026) Donn<span>é</span>es climatologiques de base.
+</div>
+<div id="ref-mueller2012" class="csl-entry" role="listitem">
+Mueller B, Seneviratne SI (2012) <a href="https://doi.org/10.1073/pnas.1204330109">Hot days induced by precipitation deficits at the global scale</a>. <em>Proceedings of the National Academy of Sciences</em>, <strong>109</strong>, 12398–12403.
+</div>
+<div id="ref-muñoz-sabater2021a" class="csl-entry" role="listitem">
+Muñoz-Sabater J, Dutra E, Agustí-Panareda A et al. (2021) <a href="https://doi.org/10.5194/essd-13-4349-2021">ERA5-land: A state-of-the-art global reanalysis dataset for land applications</a>. <em>Earth System Science Data</em>, <strong>13</strong>, 4349–4383.
+</div>
+<div id="ref-schmitt2021" class="csl-entry" role="listitem">
+Schmitt S, Tysklind N, Hérault B, Heuertz M (2021) <a href="https://doi.org/10.1111/mec.16116">Topography drives microgeographic adaptations of closely related species in two tropical tree species complexes</a>. <em>Molecular Ecology</em>, <strong>30</strong>, 5080–5093.
+</div>
+<div id="ref-slot2024" class="csl-entry" role="listitem">
+Slot M, Rifai SW, Eze CE, Winter K (2024) <a href="https://doi.org/10.1111/nph.19806">The stomatal response to vapor pressure deficit drives the apparent temperature response of photosynthesis in tropical forests</a>. <em>New Phytologist</em>, <strong>244</strong>, 1238–1249.
+</div>
+<div id="ref-stahl2011" class="csl-entry" role="listitem">
+Stahl C, Burban B, Goret J-Y, Bonal D (2011) <a href="https://doi.org/10.1007/s13595-011-0074-2">Seasonal variations in stem CO2 efflux in the neotropical rainforest of french guiana</a>. <em>Annals of Forest Science</em>, <strong>68</strong>, 771–782.
+</div>
+<div id="ref-tao2022" class="csl-entry" role="listitem">
+Tao S, Chave J, Frison P-L et al. (2022) <a href="https://doi.org/10.1073/pnas.2116626119">Increasing and widespread vulnerability of intact tropical rainforests to repeated droughts</a>. <em>Proceedings of the National Academy of Sciences</em>, <strong>119</strong>, e2116626119.
+</div>
+<div id="ref-tewksbury2008" class="csl-entry" role="listitem">
+Tewksbury JJ, Huey RB, Deutsch CA (2008) <a href="https://doi.org/10.1126/science.1159328">Putting the <span>Heat</span> on <span>Tropical Animals</span></a>. <em>Science</em>, <strong>320</strong>, 1296–1297.
+</div>
+<div id="ref-trew2024" class="csl-entry" role="listitem">
+Trew BT, Edwards DP, Lees AC et al. (2024) <a href="https://doi.org/10.1038/s41558-024-02031-0">Novel temperatures are already widespread beneath the world’s tropical forest canopies</a>. <em>Nature Climate Change</em>, <strong>14</strong>, 753–759.
+</div>
+<div id="ref-vincent2012" class="csl-entry" role="listitem">
+Vincent G, Caron F, Sabatier D, Blanc L (2012) LiDAR shows that higher forests have more slender trees.
+</div>
+<div id="ref-wu2017" class="csl-entry" role="listitem">
+Wu J, Serbin SP, Xu X et al. (2017) <a href="https://doi.org/10.1111/gcb.13725">The phenology of leaf quality and its within-canopy variation is essential for accurate modeling of photosynthesis in tropical evergreen forests</a>. <em>Global Change Biology</em>, <strong>23</strong>, 4814–4827.
+</div>
+<div id="ref-wu2021" class="csl-entry" role="listitem">
+Wu J, Su Y, Chen X et al. (2021) <a href="https://doi.org/10.1016/j.agrformet.2021.108691">Leaf shedding of <span>Pan-Asian</span> tropical evergreen forests depends on the synchrony of seasonal variations of rainfall and incoming solar radiation</a>. <em>Agricultural and Forest Meteorology</em>, <strong>311</strong>, 108691.
+</div>
+<div id="ref-yang2021" class="csl-entry" role="listitem">
+Yang X, Wu J, Chen X et al. (2021) <a href="https://doi.org/10.1016/j.xinn.2021.100154">A comprehensive framework for seasonal controls of leaf abscission and productivity in evergreen broadleaved tropical and subtropical forests</a>. <em>The Innovation</em>, <strong>2</strong>.
+</div>
+<div id="ref-zellweger2020" class="csl-entry" role="listitem">
+Zellweger F, De Frenne P, Lenoir J et al. (2020) <a href="https://doi.org/10.1126/science.aba6880">Forest microclimate dynamics drive plant responses to warming</a>. <em>Science</em>, <strong>368</strong>, 772–775.
+</div>
+<div id="ref-zhang2023" class="csl-entry" role="listitem">
+Zhang C, Su Y, Liu L et al. (2023) <a href="https://doi.org/10.1038/s41612-023-00442-y">Seasonal and long-term dynamics in forest microclimate effects: Global pattern and mechanism</a>. <em>npj Climate and Atmospheric Science</em>, <strong>6</strong>, 116.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./95_figures.html" class="pagination-link" aria-label="Figures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Figures</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./97_meeting.html" class="pagination-link" aria-label="Meetings">
+        <span class="nav-page-text">Meetings</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
